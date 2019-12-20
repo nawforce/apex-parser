@@ -1,0 +1,16 @@
+{
+  "name": "apex-parser",
+  "version": "1.0.0",
+  "description": "Javascript parser for Salesforce Apex Language",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "antlr4": "4.7.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.3"
+  }
+}

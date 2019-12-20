@@ -3,3 +3,4 @@ lib/
 antlr/*.interp
 antlr/*.js
 antlr/*.tokens
+antlr/*.ts

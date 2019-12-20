@@ -5,12 +5,21 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest --config jestconfig.json",
+    "antlr4ts": "antlr4ts -no-listener antlr/ApexLexer.g4 antlr/ApexParser.g4"
   },
+  "files": [
+    "lib/**/*"
+  ],
   "dependencies": {
-    "antlr4": "4.7.2"
+    "antlr4ts": "^0.5.0-alpha.3"
   },
   "devDependencies": {
+    "@types/jest": "^24.0.24",
+    "antlr4ts-cli": "^0.5.0-alpha.3",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
   }
 }

@@ -1,9 +1,11 @@
 {
   "name": "apex-parser",
   "version": "1.0.0",
+  "author": "Kevin Jones <nawforce@gmail.com> (https://github.com/nawforce)",
+  "bugs": "https://github.com/nawforce/apex-parser/issues",
   "description": "Javascript parser for Salesforce Apex Language",
   "main": "index.js",
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json lib",
@@ -21,5 +23,10 @@
     "jest": "^24.9.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.3"
-  }
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "homepage": "https://github.com/nawforce/apex-parser",
+  "repository": "nawforce/apex-parser"
 }

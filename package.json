@@ -4,7 +4,7 @@
   "author": "Kevin Jones <nawforce@gmail.com> (https://github.com/nawforce)",
   "bugs": "https://github.com/nawforce/apex-parser/issues",
   "description": "Javascript parser for Salesforce Apex Language",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "scripts": {
     "build": "tsc",

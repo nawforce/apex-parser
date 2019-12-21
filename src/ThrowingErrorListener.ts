@@ -25,28 +25,29 @@
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-import { ANTLRInputStream } from "antlr4ts";
+import { ANTLRErrorListener, RecognitionException, Recognizer, Token} from "antlr4ts";
 
-export class CaseInsensitiveInputStream extends ANTLRInputStream {
+export class SyntaxException {
+    line: number
+    column: number
+    message: string
 
-    path: string
+    constructor(line: number, column: number, message: string) {
+        this.line = line
+        this.column = column
+        this.message = message
+    }
+}
 
-    // Path is just an optional identifier of where the stream came from
-    constructor(path: string, input: string) {
-        super(input)
-        this.path = path
+export class ThrowingErrorListener implements ANTLRErrorListener<Token> {
+
+    constructor() {
     }
 
-    LA(i: number): number {
-        return this.toLower(super.LA(i))
-    }
-
-    // We only need basic upper to lower conversions
-    toLower(c: number): number {
-        if (c >= 65 && c <= 90) {
-            return c+32;
-        } else {
-            return c
+    syntaxError(recognizer: Recognizer<Token, any>, 
+        offendingSymbol: Token, line: number, charPositionInLine: number, msg: string, 
+        e: RecognitionException | undefined): any {
+            throw new SyntaxException(line, charPositionInLine, msg)
         }
-    }
+
 }

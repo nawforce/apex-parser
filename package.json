@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "jest --config jestconfig.json",
-    "antlr4ts": "antlr4ts -no-listener antlr/ApexLexer.g4 antlr/ApexParser.g4"
+    "test": "jest --config jestconfig.json lib",
+    "antlr4ts": "cd antlr && antlr4ts -no-listener -o ../src ApexLexer.g4 ApexParser.g4"
   },
   "files": [
     "lib/**/*"

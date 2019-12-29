@@ -403,8 +403,8 @@ expression
     | (TILDE|BANG) expression                                                                         # negExpression
     | expression (MUL|DIV|MOD) expression                                                             # arth1Expression
     | expression (ADD|SUB) expression                                                                 # arth2Expression
-    | expression (LT LT | GT GT GT | GT GT) expression                                                # cmp1Expression
-    | expression (LT ASSIGN | GT ASSIGN | LE | GE | GT | LT) expression                               # cmp2Expression
+    | expression (LT LT | GT GT GT | GT GT) expression                                                # bitExpression
+    | expression (LE | GE | GT | LT) expression                                                       # cmpExpression
     | expression INSTANCEOF typeRef                                                                   # instanceOfExpression
     | expression (TRIPLEEQUAL | TRIPLENOTEQUAL | EQUAL | NOTEQUAL | LESSANDGREATER ) expression       # equalityExpression
     | expression BITAND expression                                                                    # bitAndExpression

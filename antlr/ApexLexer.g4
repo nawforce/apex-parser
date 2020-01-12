@@ -177,8 +177,6 @@ DOT             : '.';
 // §3.12 Operators
 
 ASSIGN          : '=';
-LE              : '<=';
-GE              : '>=';
 GT              : '>';
 LT              : '<';
 BANG            : '!';
@@ -216,6 +214,12 @@ LSHIFT_ASSIGN   : '<<=';
 RSHIFT_ASSIGN   : '>>=';
 URSHIFT_ASSIGN  : '>>>=';
 
+//
+// Additional symbols not defined in the lexical specification
+//
+
+AT : '@';
+
 
 // §3.8 Identifiers (must appear after all keywords in the grammar)
 
@@ -223,6 +227,8 @@ Identifier
     :   JavaLetter JavaLetterOrDigit*
     ;
 
+// Apex identifiers don't support non-ascii but we maintain Java rules here and post-validate
+// so we can give better error messages
 fragment
 JavaLetter
     :   [a-zA-Z$_] // these are the "java letters" below 0xFF
@@ -240,12 +246,6 @@ JavaLetterOrDigit
     |   // covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
         [\uD800-\uDBFF] [\uDC00-\uDFFF]
     ;
-
-//
-// Additional symbols not defined in the lexical specification
-//
-
-AT : '@';
 
 //
 // Whitespace and comments

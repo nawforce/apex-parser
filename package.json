@@ -1,6 +1,6 @@
 {
   "name": "apex-parser",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Kevin Jones <nawforce@gmail.com> (https://github.com/nawforce)",
   "bugs": "https://github.com/nawforce/apex-parser/issues",
   "description": "Javascript parser for Salesforce Apex Language",

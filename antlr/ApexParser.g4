@@ -41,7 +41,16 @@
 parser grammar ApexParser;
 options {tokenVocab=ApexLexer;}
 
-// starting point for parsing a apexcode file
+// entry point for Apex trigger files
+triggerUnit
+    : TRIGGER id ON id LPAREN triggerCase (COMMA triggerCase)* RPAREN block EOF
+    ;
+
+triggerCase
+    : (BEFORE|AFTER) (INSERT|UPDATE|DELETE|UNDELETE)
+    ;
+
+// entry point for Apex class files
 compilationUnit
     : typeDeclaration EOF
     ;
@@ -273,7 +282,20 @@ switchStatement
     ;
 
 whenControl
-    : WHEN (ELSE | expressionList) block
+    : WHEN whenValue block
+    ;
+
+whenValue
+    : ELSE
+    | whenLiteral (COMMA whenLiteral)*
+    | id id
+    ;
+
+whenLiteral
+    : (SUB)? IntegerLiteral
+    | StringLiteral
+    | NULL
+    | id
     ;
 
 forStatement
@@ -494,6 +516,8 @@ soqlLiteral
 id
     : Identifier
     | ABSTRACT
+    | AFTER
+    | BEFORE
     | BREAK
     | BYTE
     | CATCH
@@ -536,6 +560,7 @@ id
     | TESTMETHOD
     | THROW
     | TRANSIENT
+    | TRIGGER
     | TRY
     | UNDELETE
     | UPDATE

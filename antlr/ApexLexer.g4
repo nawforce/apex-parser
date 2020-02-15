@@ -47,6 +47,8 @@ channels {
 
 // Keywords
 ABSTRACT      : 'abstract';
+AFTER         : 'after';
+BEFORE        : 'before';
 BREAK         : 'break';
 BYTE          : 'byte';
 CATCH         : 'catch';
@@ -91,6 +93,7 @@ TESTMETHOD    : 'testmethod';
 THIS          : 'this';
 THROW         : 'throw';
 TRANSIENT     : 'transient';
+TRIGGER       : 'trigger';
 TRY           : 'try';
 UNDELETE      : 'undelete';
 UPDATE        : 'update';

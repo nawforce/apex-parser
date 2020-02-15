@@ -56,3 +56,13 @@ test('Compilation Unit (throwing errors)', () => {
         expect(ex).toBeInstanceOf(SyntaxException)
     }
 })
+
+test('Trigger Unit', () => {
+    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "trigger test on Account (before update, after update) {}"))
+    let tokens  = new CommonTokenStream(lexer);
+
+    let parser = new ApexParser(tokens)
+    let context = parser.triggerUnit()
+
+    expect(context).toBeTruthy()
+})

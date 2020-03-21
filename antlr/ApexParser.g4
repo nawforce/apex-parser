@@ -137,7 +137,7 @@ memberDeclaration
 
 
 methodDeclaration
-    : modifier* (typeRef|VOID) id formalParameters
+    : (typeRef|VOID) id formalParameters
       (   block
       |   SEMI
       )
@@ -180,7 +180,10 @@ arraySubscripts
     ;
 
 typeName
-    : id typeArguments?
+    : LIST typeArguments?
+    | SET typeArguments?
+    | MAP typeArguments?
+    | id typeArguments?
     ;
 
 typeArguments
@@ -355,7 +358,7 @@ mergeStatement
     ;
 
 runAsStatement
-    : RUNAS LPAREN expressionList? RPAREN block?
+    : SYSTEMRUNAS LPAREN expressionList? RPAREN block
     ;
 
 expressionStatement
@@ -413,8 +416,8 @@ expressionList
 expression
     : primary                                                                                         # primaryExpression
     | expression DOT
-        ( id
-        | methodCall
+        ( dotMethodCall
+        | anyId
         )                                                                                             # dotExpression
     | expression LBRACK expression RBRACK                                                             # arrayExpression
     | methodCall                                                                                      # methodCallExpression
@@ -468,6 +471,10 @@ methodCall
     | SUPER LPAREN expressionList? RPAREN
     ;
 
+dotMethodCall
+    : anyId LPAREN expressionList? RPAREN
+    ;
+
 creator
     :  createdName (noRest | classCreatorRest | arrayCreatorRest | mapCreatorRest | setCreatorRest)
     ;
@@ -477,7 +484,7 @@ createdName
     ;
 
 idCreatedNamePair
-    : id (LT typeList GT)?
+    : anyId (LT typeList GT)?
     ;
 
 noRest
@@ -498,7 +505,7 @@ mapCreatorRest
     ;
 
 mapCreatorRestPair
-    : expression MAP expression
+    : expression MAPTO expression
     ;
 
 setCreatorRest
@@ -513,19 +520,37 @@ soqlLiteral
     : LBRACK (soqlLiteral|~RBRACK)*? RBRACK
     ;
 
+// Some keywords can be used as general identifiers, this is likley an over simplification of the actual
+// rules but devining them from playing with Apex is very difficult. We could let any be used but that
+// can significantly impact the parser performance by creating ambiguities.
 id
+    : Identifier
+    | AFTER
+    | BEFORE
+    | GET
+    | INHERITED
+    | INSTANCEOF
+    | SET
+    | SHARING
+    | SWITCH
+    | TRANSIENT
+    | TRIGGER
+    | WHEN
+    | WITH
+    | WITHOUT
+    ;
+
+// In dot expressions we, can use a wider set of of identifiers, apparently any of them althogh I have excluding VOID
+// in the interests of reducing ambiguity
+anyId
     : Identifier
     | ABSTRACT
     | AFTER
     | BEFORE
     | BREAK
-    | BYTE
     | CATCH
-    | CHAR
     | CLASS
-    | CONST
     | CONTINUE
-    | DEFAULT
     | DELETE
     | DO
     | ELSE
@@ -542,6 +567,8 @@ id
     | INSERT
     | INSTANCEOF
     | INTERFACE
+    | LIST
+    | MAP
     | MERGE
     | NEW
     | NULL
@@ -551,13 +578,13 @@ id
     | PROTECTED
     | PUBLIC
     | RETURN
-    | RUNAS
     | SET
     | SHARING
-    | SHORT
     | STATIC
+    | SUPER
     | SWITCH
     | TESTMETHOD
+    | THIS
     | THROW
     | TRANSIENT
     | TRIGGER
@@ -566,11 +593,9 @@ id
     | UPDATE
     | UPSERT
     | VIRTUAL
-    | VOID
     | WEBSERVICE
     | WHEN
     | WHILE
     | WITH
     | WITHOUT
     ;
-

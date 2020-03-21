@@ -50,13 +50,9 @@ ABSTRACT      : 'abstract';
 AFTER         : 'after';
 BEFORE        : 'before';
 BREAK         : 'break';
-BYTE          : 'byte';
 CATCH         : 'catch';
-CHAR          : 'char';
 CLASS         : 'class';
-CONST         : 'const';
 CONTINUE      : 'continue';
-DEFAULT       : 'default';
 DELETE        : 'delete';
 DO            : 'do';
 ELSE          : 'else';
@@ -82,10 +78,9 @@ PRIVATE       : 'private';
 PROTECTED     : 'protected';
 PUBLIC        : 'public';
 RETURN        : 'return';
-RUNAS         : 'system.runas';
+SYSTEMRUNAS   : 'system.runas';
 SET           : 'set';
 SHARING       : 'sharing';
-SHORT         : 'short';
 STATIC        : 'static';
 SUPER         : 'super';
 SWITCH        : 'switch';
@@ -105,6 +100,10 @@ WHEN          : 'when';
 WHILE         : 'while';
 WITH          : 'with';
 WITHOUT       : 'without';
+
+// Apex generic types, Set is defined above for properties
+LIST          : 'list';
+MAP           : 'map';
 
 // §3.10.1 Integer Literals
 
@@ -203,7 +202,7 @@ BITAND          : '&';
 BITOR           : '|';
 CARET           : '^';
 MOD             : '%';
-MAP             : '=>';
+MAPTO           : '=>';
 
 ADD_ASSIGN      : '+=';
 SUB_ASSIGN      : '-=';

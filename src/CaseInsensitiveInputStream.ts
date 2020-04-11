@@ -29,12 +29,12 @@ import { ANTLRInputStream } from "antlr4ts";
 
 export class CaseInsensitiveInputStream extends ANTLRInputStream {
 
-    path: string
+    userData: any
 
-    // Path is just an optional identifier of where the stream came from
-    constructor(path: string, input: string) {
+    // userData is an untyped identifier of where the stream is from
+    constructor(userData: any, input: string) {
         super(input)
-        this.path = path
+        this.userData = userData
     }
 
     LA(i: number): number {

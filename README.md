@@ -25,6 +25,8 @@ If you change the Parser or Lexer grammar files you will need to update the pars
     npm run antlr4ts 
 
 ### History
+    2.2.1 - Dependency security fixes
+    2.2.0 - Parser performance improvements
     2.1.0 - Supports trigger parsing and switch statement parsing syntax was corrected
     1.0.0 - Initial version
 

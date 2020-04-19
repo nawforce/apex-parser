@@ -26,10 +26,10 @@
  THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-/** 
+/**
  *  An Apexcode grammar derived from Java 1.7 grammar for ANTLR v4.
  *  Uses ANTLR v4's left-recursive expression notation.
- *  
+ *
  *  @maintainer: Andrey Gavrikov
  *
  *  You can test with
@@ -396,7 +396,7 @@ forInit
     ;
 
 enhancedForControl
-    : modifier* typeRef id COLON expression
+    : typeRef id COLON expression
     ;
 
 forUpdate

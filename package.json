@@ -1,6 +1,6 @@
 {
   "name": "apex-parser",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "author": "Kevin Jones <nawforce@gmail.com> (https://github.com/nawforce)",
   "bugs": "https://github.com/nawforce/apex-parser/issues",
   "description": "Javascript parser for Salesforce Apex Language",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json lib",
-    "antlr4ts": "cd antlr && antlr4ts -no-listener -o ../src ApexLexer.g4 ApexParser.g4"
+    "antlr4ts": "cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4"
   },
   "files": [
     "lib/**/*"
@@ -18,11 +18,11 @@
     "antlr4ts": "^0.5.0-alpha.3"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.24",
+    "@types/jest": "^26.0.9",
     "antlr4ts-cli": "^0.5.0-alpha.3",
-    "jest": "^24.9.0",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.3"
+    "jest": "^26.2.2",
+    "ts-jest": "^26.1.4",
+    "typescript": "^3.9.7"
   },
   "engines": {
     "node": ">=8.0.0"

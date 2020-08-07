@@ -25,6 +25,7 @@ If you change the Parser or Lexer grammar files you will need to update the pars
     npm run antlr4ts 
 
 ### History
+    2.4.0 - Enable Listener & Visitor use
     2.3.0 - Removed modifers from enhanced for loop
     2.2.1 - Dependency security fixes
     2.2.0 - Parser performance improvements

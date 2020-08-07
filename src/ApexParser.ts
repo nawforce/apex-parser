@@ -23,6 +23,9 @@ import { VocabularyImpl } from "antlr4ts/VocabularyImpl";
 
 import * as Utils from "antlr4ts/misc/Utils";
 
+import { ApexParserListener } from "./ApexParserListener";
+import { ApexParserVisitor } from "./ApexParserVisitor";
+
 
 export class ApexParser extends Parser {
 	public static readonly ABSTRACT = 1;
@@ -5712,6 +5715,26 @@ export class TriggerUnitContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_triggerUnit; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTriggerUnit) {
+			listener.enterTriggerUnit(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTriggerUnit) {
+			listener.exitTriggerUnit(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTriggerUnit) {
+			return visitor.visitTriggerUnit(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5727,6 +5750,26 @@ export class TriggerCaseContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_triggerCase; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTriggerCase) {
+			listener.enterTriggerCase(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTriggerCase) {
+			listener.exitTriggerCase(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTriggerCase) {
+			return visitor.visitTriggerCase(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5740,6 +5783,26 @@ export class CompilationUnitContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_compilationUnit; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCompilationUnit) {
+			listener.enterCompilationUnit(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCompilationUnit) {
+			listener.exitCompilationUnit(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCompilationUnit) {
+			return visitor.visitCompilationUnit(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5767,6 +5830,26 @@ export class TypeDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_typeDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTypeDeclaration) {
+			listener.enterTypeDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTypeDeclaration) {
+			listener.exitTypeDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTypeDeclaration) {
+			return visitor.visitTypeDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5791,6 +5874,26 @@ export class ClassDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_classDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterClassDeclaration) {
+			listener.enterClassDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitClassDeclaration) {
+			listener.exitClassDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitClassDeclaration) {
+			return visitor.visitClassDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5809,6 +5912,26 @@ export class EnumDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_enumDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterEnumDeclaration) {
+			listener.enterEnumDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitEnumDeclaration) {
+			listener.exitEnumDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitEnumDeclaration) {
+			return visitor.visitEnumDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5836,6 +5959,26 @@ export class EnumConstantsContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_enumConstants; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterEnumConstants) {
+			listener.enterEnumConstants(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitEnumConstants) {
+			listener.exitEnumConstants(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitEnumConstants) {
+			return visitor.visitEnumConstants(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5856,6 +5999,26 @@ export class InterfaceDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_interfaceDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterInterfaceDeclaration) {
+			listener.enterInterfaceDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitInterfaceDeclaration) {
+			listener.exitInterfaceDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitInterfaceDeclaration) {
+			return visitor.visitInterfaceDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5883,6 +6046,26 @@ export class TypeListContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_typeList; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTypeList) {
+			listener.enterTypeList(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTypeList) {
+			listener.exitTypeList(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTypeList) {
+			return visitor.visitTypeList(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5903,6 +6086,26 @@ export class ClassBodyContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_classBody; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterClassBody) {
+			listener.enterClassBody(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitClassBody) {
+			listener.exitClassBody(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitClassBody) {
+			return visitor.visitClassBody(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5923,6 +6126,26 @@ export class InterfaceBodyContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_interfaceBody; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterInterfaceBody) {
+			listener.enterInterfaceBody(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitInterfaceBody) {
+			listener.exitInterfaceBody(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitInterfaceBody) {
+			return visitor.visitInterfaceBody(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5949,6 +6172,26 @@ export class ClassBodyDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_classBodyDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterClassBodyDeclaration) {
+			listener.enterClassBodyDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitClassBodyDeclaration) {
+			listener.exitClassBodyDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitClassBodyDeclaration) {
+			return visitor.visitClassBodyDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -5977,6 +6220,26 @@ export class ModifierContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_modifier; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterModifier) {
+			listener.enterModifier(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitModifier) {
+			listener.exitModifier(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitModifier) {
+			return visitor.visitModifier(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6007,6 +6270,26 @@ export class MemberDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_memberDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMemberDeclaration) {
+			listener.enterMemberDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMemberDeclaration) {
+			listener.exitMemberDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMemberDeclaration) {
+			return visitor.visitMemberDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6030,6 +6313,26 @@ export class MethodDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_methodDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMethodDeclaration) {
+			listener.enterMethodDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMethodDeclaration) {
+			listener.exitMethodDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMethodDeclaration) {
+			return visitor.visitMethodDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6048,6 +6351,26 @@ export class ConstructorDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_constructorDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterConstructorDeclaration) {
+			listener.enterConstructorDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitConstructorDeclaration) {
+			listener.exitConstructorDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitConstructorDeclaration) {
+			return visitor.visitConstructorDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6064,6 +6387,26 @@ export class FieldDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_fieldDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterFieldDeclaration) {
+			listener.enterFieldDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitFieldDeclaration) {
+			listener.exitFieldDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitFieldDeclaration) {
+			return visitor.visitFieldDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6090,6 +6433,26 @@ export class PropertyDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_propertyDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterPropertyDeclaration) {
+			listener.enterPropertyDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitPropertyDeclaration) {
+			listener.exitPropertyDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitPropertyDeclaration) {
+			return visitor.visitPropertyDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6119,6 +6482,26 @@ export class InterfaceMethodDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_interfaceMethodDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterInterfaceMethodDeclaration) {
+			listener.enterInterfaceMethodDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitInterfaceMethodDeclaration) {
+			listener.exitInterfaceMethodDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitInterfaceMethodDeclaration) {
+			return visitor.visitInterfaceMethodDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6146,6 +6529,26 @@ export class VariableDeclaratorsContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_variableDeclarators; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterVariableDeclarators) {
+			listener.enterVariableDeclarators(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitVariableDeclarators) {
+			listener.exitVariableDeclarators(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitVariableDeclarators) {
+			return visitor.visitVariableDeclarators(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6162,6 +6565,26 @@ export class VariableDeclaratorContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_variableDeclarator; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterVariableDeclarator) {
+			listener.enterVariableDeclarator(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitVariableDeclarator) {
+			listener.exitVariableDeclarator(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitVariableDeclarator) {
+			return visitor.visitVariableDeclarator(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6191,6 +6614,26 @@ export class ArrayInitializerContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_arrayInitializer; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArrayInitializer) {
+			listener.enterArrayInitializer(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArrayInitializer) {
+			listener.exitArrayInitializer(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArrayInitializer) {
+			return visitor.visitArrayInitializer(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6221,6 +6664,26 @@ export class TypeRefContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_typeRef; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTypeRef) {
+			listener.enterTypeRef(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTypeRef) {
+			listener.exitTypeRef(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTypeRef) {
+			return visitor.visitTypeRef(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6248,6 +6711,26 @@ export class ArraySubscriptsContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_arraySubscripts; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArraySubscripts) {
+			listener.enterArraySubscripts(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArraySubscripts) {
+			listener.exitArraySubscripts(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArraySubscripts) {
+			return visitor.visitArraySubscripts(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6266,6 +6749,26 @@ export class TypeNameContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_typeName; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTypeName) {
+			listener.enterTypeName(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTypeName) {
+			listener.exitTypeName(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTypeName) {
+			return visitor.visitTypeName(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6280,6 +6783,26 @@ export class TypeArgumentsContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_typeArguments; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTypeArguments) {
+			listener.enterTypeArguments(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTypeArguments) {
+			listener.exitTypeArguments(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTypeArguments) {
+			return visitor.visitTypeArguments(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6294,6 +6817,26 @@ export class FormalParametersContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_formalParameters; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterFormalParameters) {
+			listener.enterFormalParameters(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitFormalParameters) {
+			listener.exitFormalParameters(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitFormalParameters) {
+			return visitor.visitFormalParameters(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6321,6 +6864,26 @@ export class FormalParameterListContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_formalParameterList; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterFormalParameterList) {
+			listener.enterFormalParameterList(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitFormalParameterList) {
+			listener.exitFormalParameterList(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitFormalParameterList) {
+			return visitor.visitFormalParameterList(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6345,6 +6908,26 @@ export class FormalParameterContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_formalParameter; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterFormalParameter) {
+			listener.enterFormalParameter(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitFormalParameter) {
+			listener.exitFormalParameter(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitFormalParameter) {
+			return visitor.visitFormalParameter(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6372,6 +6955,26 @@ export class QualifiedNameContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_qualifiedName; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterQualifiedName) {
+			listener.enterQualifiedName(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitQualifiedName) {
+			listener.exitQualifiedName(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitQualifiedName) {
+			return visitor.visitQualifiedName(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6386,6 +6989,26 @@ export class LiteralContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_literal; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterLiteral) {
+			listener.enterLiteral(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitLiteral) {
+			listener.exitLiteral(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitLiteral) {
+			return visitor.visitLiteral(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6407,6 +7030,26 @@ export class AnnotationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_annotation; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterAnnotation) {
+			listener.enterAnnotation(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitAnnotation) {
+			listener.exitAnnotation(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitAnnotation) {
+			return visitor.visitAnnotation(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6434,6 +7077,26 @@ export class ElementValuePairsContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_elementValuePairs; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterElementValuePairs) {
+			listener.enterElementValuePairs(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitElementValuePairs) {
+			listener.exitElementValuePairs(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitElementValuePairs) {
+			return visitor.visitElementValuePairs(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6450,6 +7113,26 @@ export class ElementValuePairContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_elementValuePair; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterElementValuePair) {
+			listener.enterElementValuePair(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitElementValuePair) {
+			listener.exitElementValuePair(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitElementValuePair) {
+			return visitor.visitElementValuePair(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6468,6 +7151,26 @@ export class ElementValueContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_elementValue; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterElementValue) {
+			listener.enterElementValue(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitElementValue) {
+			listener.exitElementValue(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitElementValue) {
+			return visitor.visitElementValue(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6497,6 +7200,26 @@ export class ElementValueArrayInitializerContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_elementValueArrayInitializer; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterElementValueArrayInitializer) {
+			listener.enterElementValueArrayInitializer(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitElementValueArrayInitializer) {
+			listener.exitElementValueArrayInitializer(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitElementValueArrayInitializer) {
+			return visitor.visitElementValueArrayInitializer(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6517,6 +7240,26 @@ export class BlockContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_block; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterBlock) {
+			listener.enterBlock(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitBlock) {
+			listener.exitBlock(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitBlock) {
+			return visitor.visitBlock(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6530,6 +7273,26 @@ export class LocalVariableDeclarationStatementContext extends ParserRuleContext 
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_localVariableDeclarationStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterLocalVariableDeclarationStatement) {
+			listener.enterLocalVariableDeclarationStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitLocalVariableDeclarationStatement) {
+			listener.exitLocalVariableDeclarationStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitLocalVariableDeclarationStatement) {
+			return visitor.visitLocalVariableDeclarationStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6554,6 +7317,26 @@ export class LocalVariableDeclarationContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_localVariableDeclaration; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterLocalVariableDeclaration) {
+			listener.enterLocalVariableDeclaration(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitLocalVariableDeclaration) {
+			listener.exitLocalVariableDeclaration(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitLocalVariableDeclaration) {
+			return visitor.visitLocalVariableDeclaration(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6623,6 +7406,26 @@ export class StatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_statement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterStatement) {
+			listener.enterStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitStatement) {
+			listener.exitStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitStatement) {
+			return visitor.visitStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6646,6 +7449,26 @@ export class IfStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_ifStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterIfStatement) {
+			listener.enterIfStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitIfStatement) {
+			listener.exitIfStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitIfStatement) {
+			return visitor.visitIfStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6671,6 +7494,26 @@ export class SwitchStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_switchStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSwitchStatement) {
+			listener.enterSwitchStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSwitchStatement) {
+			listener.exitSwitchStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSwitchStatement) {
+			return visitor.visitSwitchStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6687,6 +7530,26 @@ export class WhenControlContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_whenControl; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterWhenControl) {
+			listener.enterWhenControl(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitWhenControl) {
+			listener.exitWhenControl(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitWhenControl) {
+			return visitor.visitWhenControl(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6724,6 +7587,26 @@ export class WhenValueContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_whenValue; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterWhenValue) {
+			listener.enterWhenValue(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitWhenValue) {
+			listener.exitWhenValue(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitWhenValue) {
+			return visitor.visitWhenValue(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6740,6 +7623,26 @@ export class WhenLiteralContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_whenLiteral; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterWhenLiteral) {
+			listener.enterWhenLiteral(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitWhenLiteral) {
+			listener.exitWhenLiteral(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitWhenLiteral) {
+			return visitor.visitWhenLiteral(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6758,6 +7661,26 @@ export class ForStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_forStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterForStatement) {
+			listener.enterForStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitForStatement) {
+			listener.exitForStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitForStatement) {
+			return visitor.visitForStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6774,6 +7697,26 @@ export class WhileStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_whileStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterWhileStatement) {
+			listener.enterWhileStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitWhileStatement) {
+			listener.exitWhileStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitWhileStatement) {
+			return visitor.visitWhileStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6792,6 +7735,26 @@ export class DoWhileStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_doWhileStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterDoWhileStatement) {
+			listener.enterDoWhileStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitDoWhileStatement) {
+			listener.exitDoWhileStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitDoWhileStatement) {
+			return visitor.visitDoWhileStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6817,6 +7780,26 @@ export class TryStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_tryStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTryStatement) {
+			listener.enterTryStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTryStatement) {
+			listener.exitTryStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTryStatement) {
+			return visitor.visitTryStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6831,6 +7814,26 @@ export class ReturnStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_returnStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterReturnStatement) {
+			listener.enterReturnStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitReturnStatement) {
+			listener.exitReturnStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitReturnStatement) {
+			return visitor.visitReturnStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6845,6 +7848,26 @@ export class ThrowStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_throwStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterThrowStatement) {
+			listener.enterThrowStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitThrowStatement) {
+			listener.exitThrowStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitThrowStatement) {
+			return visitor.visitThrowStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6856,6 +7879,26 @@ export class BreakStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_breakStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterBreakStatement) {
+			listener.enterBreakStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitBreakStatement) {
+			listener.exitBreakStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitBreakStatement) {
+			return visitor.visitBreakStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6867,6 +7910,26 @@ export class ContinueStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_continueStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterContinueStatement) {
+			listener.enterContinueStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitContinueStatement) {
+			listener.exitContinueStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitContinueStatement) {
+			return visitor.visitContinueStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6881,6 +7944,26 @@ export class InsertStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_insertStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterInsertStatement) {
+			listener.enterInsertStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitInsertStatement) {
+			listener.exitInsertStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitInsertStatement) {
+			return visitor.visitInsertStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6895,6 +7978,26 @@ export class UpdateStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_updateStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterUpdateStatement) {
+			listener.enterUpdateStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitUpdateStatement) {
+			listener.exitUpdateStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitUpdateStatement) {
+			return visitor.visitUpdateStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6909,6 +8012,26 @@ export class DeleteStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_deleteStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterDeleteStatement) {
+			listener.enterDeleteStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitDeleteStatement) {
+			listener.exitDeleteStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitDeleteStatement) {
+			return visitor.visitDeleteStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6923,6 +8046,26 @@ export class UndeleteStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_undeleteStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterUndeleteStatement) {
+			listener.enterUndeleteStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitUndeleteStatement) {
+			listener.exitUndeleteStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitUndeleteStatement) {
+			return visitor.visitUndeleteStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6940,6 +8083,26 @@ export class UpsertStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_upsertStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterUpsertStatement) {
+			listener.enterUpsertStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitUpsertStatement) {
+			listener.exitUpsertStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitUpsertStatement) {
+			return visitor.visitUpsertStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6960,6 +8123,26 @@ export class MergeStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_mergeStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMergeStatement) {
+			listener.enterMergeStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMergeStatement) {
+			listener.exitMergeStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMergeStatement) {
+			return visitor.visitMergeStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6978,6 +8161,26 @@ export class RunAsStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_runAsStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterRunAsStatement) {
+			listener.enterRunAsStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitRunAsStatement) {
+			listener.exitRunAsStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitRunAsStatement) {
+			return visitor.visitRunAsStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -6991,6 +8194,26 @@ export class ExpressionStatementContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_expressionStatement; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterExpressionStatement) {
+			listener.enterExpressionStatement(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitExpressionStatement) {
+			listener.exitExpressionStatement(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitExpressionStatement) {
+			return visitor.visitExpressionStatement(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7015,6 +8238,26 @@ export class PropertyBlockContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_propertyBlock; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterPropertyBlock) {
+			listener.enterPropertyBlock(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitPropertyBlock) {
+			listener.exitPropertyBlock(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitPropertyBlock) {
+			return visitor.visitPropertyBlock(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7029,6 +8272,26 @@ export class GetterContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_getter; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterGetter) {
+			listener.enterGetter(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitGetter) {
+			listener.exitGetter(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitGetter) {
+			return visitor.visitGetter(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7043,6 +8306,26 @@ export class SetterContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_setter; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSetter) {
+			listener.enterSetter(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSetter) {
+			listener.exitSetter(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSetter) {
+			return visitor.visitSetter(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7073,6 +8356,26 @@ export class CatchClauseContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_catchClause; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCatchClause) {
+			listener.enterCatchClause(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCatchClause) {
+			listener.exitCatchClause(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCatchClause) {
+			return visitor.visitCatchClause(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7086,6 +8389,26 @@ export class FinallyBlockContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_finallyBlock; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterFinallyBlock) {
+			listener.enterFinallyBlock(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitFinallyBlock) {
+			listener.exitFinallyBlock(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitFinallyBlock) {
+			return visitor.visitFinallyBlock(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7116,6 +8439,26 @@ export class ForControlContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_forControl; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterForControl) {
+			listener.enterForControl(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitForControl) {
+			listener.exitForControl(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitForControl) {
+			return visitor.visitForControl(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7131,6 +8474,26 @@ export class ForInitContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_forInit; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterForInit) {
+			listener.enterForInit(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitForInit) {
+			listener.exitForInit(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitForInit) {
+			return visitor.visitForInit(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7150,6 +8513,26 @@ export class EnhancedForControlContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_enhancedForControl; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterEnhancedForControl) {
+			listener.enterEnhancedForControl(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitEnhancedForControl) {
+			listener.exitEnhancedForControl(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitEnhancedForControl) {
+			return visitor.visitEnhancedForControl(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7162,6 +8545,26 @@ export class ForUpdateContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_forUpdate; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterForUpdate) {
+			listener.enterForUpdate(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitForUpdate) {
+			listener.exitForUpdate(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitForUpdate) {
+			return visitor.visitForUpdate(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7176,6 +8579,26 @@ export class ParExpressionContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_parExpression; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterParExpression) {
+			listener.enterParExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitParExpression) {
+			listener.exitParExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitParExpression) {
+			return visitor.visitParExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7203,6 +8626,26 @@ export class ExpressionListContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_expressionList; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterExpressionList) {
+			listener.enterExpressionList(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitExpressionList) {
+			listener.exitExpressionList(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitExpressionList) {
+			return visitor.visitExpressionList(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7224,6 +8667,26 @@ export class PrimaryExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterPrimaryExpression) {
+			listener.enterPrimaryExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitPrimaryExpression) {
+			listener.exitPrimaryExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitPrimaryExpression) {
+			return visitor.visitPrimaryExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class DotExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -7239,6 +8702,26 @@ export class DotExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterDotExpression) {
+			listener.enterDotExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitDotExpression) {
+			listener.exitDotExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitDotExpression) {
+			return visitor.visitDotExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class ArrayExpressionContext extends ExpressionContext {
@@ -7257,6 +8740,26 @@ export class ArrayExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArrayExpression) {
+			listener.enterArrayExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArrayExpression) {
+			listener.exitArrayExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArrayExpression) {
+			return visitor.visitArrayExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class MethodCallExpressionContext extends ExpressionContext {
 	public methodCall(): MethodCallContext {
@@ -7265,6 +8768,26 @@ export class MethodCallExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMethodCallExpression) {
+			listener.enterMethodCallExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMethodCallExpression) {
+			listener.exitMethodCallExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMethodCallExpression) {
+			return visitor.visitMethodCallExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class NewExpressionContext extends ExpressionContext {
@@ -7275,6 +8798,26 @@ export class NewExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterNewExpression) {
+			listener.enterNewExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitNewExpression) {
+			listener.exitNewExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitNewExpression) {
+			return visitor.visitNewExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class CastExpressionContext extends ExpressionContext {
@@ -7290,6 +8833,26 @@ export class CastExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCastExpression) {
+			listener.enterCastExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCastExpression) {
+			listener.exitCastExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCastExpression) {
+			return visitor.visitCastExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class PostOpExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -7300,6 +8863,26 @@ export class PostOpExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterPostOpExpression) {
+			listener.enterPostOpExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitPostOpExpression) {
+			listener.exitPostOpExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitPostOpExpression) {
+			return visitor.visitPostOpExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class PreOpExpressionContext extends ExpressionContext {
@@ -7314,6 +8897,26 @@ export class PreOpExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterPreOpExpression) {
+			listener.enterPreOpExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitPreOpExpression) {
+			listener.exitPreOpExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitPreOpExpression) {
+			return visitor.visitPreOpExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class NegExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -7324,6 +8927,26 @@ export class NegExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterNegExpression) {
+			listener.enterNegExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitNegExpression) {
+			listener.exitNegExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitNegExpression) {
+			return visitor.visitNegExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class Arth1ExpressionContext extends ExpressionContext {
@@ -7343,6 +8966,26 @@ export class Arth1ExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArth1Expression) {
+			listener.enterArth1Expression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArth1Expression) {
+			listener.exitArth1Expression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArth1Expression) {
+			return visitor.visitArth1Expression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class Arth2ExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7359,6 +9002,26 @@ export class Arth2ExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArth2Expression) {
+			listener.enterArth2Expression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArth2Expression) {
+			listener.exitArth2Expression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArth2Expression) {
+			return visitor.visitArth2Expression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class BitExpressionContext extends ExpressionContext {
@@ -7393,6 +9056,26 @@ export class BitExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterBitExpression) {
+			listener.enterBitExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitBitExpression) {
+			listener.exitBitExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitBitExpression) {
+			return visitor.visitBitExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class CmpExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7411,6 +9094,26 @@ export class CmpExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCmpExpression) {
+			listener.enterCmpExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCmpExpression) {
+			listener.exitCmpExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCmpExpression) {
+			return visitor.visitCmpExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class InstanceOfExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext {
@@ -7423,6 +9126,26 @@ export class InstanceOfExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterInstanceOfExpression) {
+			listener.enterInstanceOfExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitInstanceOfExpression) {
+			listener.exitInstanceOfExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitInstanceOfExpression) {
+			return visitor.visitInstanceOfExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class EqualityExpressionContext extends ExpressionContext {
@@ -7444,6 +9167,26 @@ export class EqualityExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterEqualityExpression) {
+			listener.enterEqualityExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitEqualityExpression) {
+			listener.exitEqualityExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitEqualityExpression) {
+			return visitor.visitEqualityExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class BitAndExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7459,6 +9202,26 @@ export class BitAndExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterBitAndExpression) {
+			listener.enterBitAndExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitBitAndExpression) {
+			listener.exitBitAndExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitBitAndExpression) {
+			return visitor.visitBitAndExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class BitNotExpressionContext extends ExpressionContext {
@@ -7476,6 +9239,26 @@ export class BitNotExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterBitNotExpression) {
+			listener.enterBitNotExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitBitNotExpression) {
+			listener.exitBitNotExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitBitNotExpression) {
+			return visitor.visitBitNotExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class BitOrExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7491,6 +9274,26 @@ export class BitOrExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterBitOrExpression) {
+			listener.enterBitOrExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitBitOrExpression) {
+			listener.exitBitOrExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitBitOrExpression) {
+			return visitor.visitBitOrExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class LogAndExpressionContext extends ExpressionContext {
@@ -7508,6 +9311,26 @@ export class LogAndExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterLogAndExpression) {
+			listener.enterLogAndExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitLogAndExpression) {
+			listener.exitLogAndExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitLogAndExpression) {
+			return visitor.visitLogAndExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class LogOrExpressionContext extends ExpressionContext {
 	public expression(): ExpressionContext[];
@@ -7523,6 +9346,26 @@ export class LogOrExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterLogOrExpression) {
+			listener.enterLogOrExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitLogOrExpression) {
+			listener.exitLogOrExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitLogOrExpression) {
+			return visitor.visitLogOrExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class CondExpressionContext extends ExpressionContext {
@@ -7540,6 +9383,26 @@ export class CondExpressionContext extends ExpressionContext {
 	constructor(ctx: ExpressionContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCondExpression) {
+			listener.enterCondExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCondExpression) {
+			listener.exitCondExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCondExpression) {
+			return visitor.visitCondExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class AssignExpressionContext extends ExpressionContext {
@@ -7568,6 +9431,26 @@ export class AssignExpressionContext extends ExpressionContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterAssignExpression) {
+			listener.enterAssignExpression(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitAssignExpression) {
+			listener.exitAssignExpression(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitAssignExpression) {
+			return visitor.visitAssignExpression(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7591,6 +9474,26 @@ export class SubPrimaryContext extends PrimaryContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSubPrimary) {
+			listener.enterSubPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSubPrimary) {
+			listener.exitSubPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSubPrimary) {
+			return visitor.visitSubPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class ThisPrimaryContext extends PrimaryContext {
 	public THIS(): TerminalNode { return this.getToken(ApexParser.THIS, 0); }
@@ -7598,12 +9501,52 @@ export class ThisPrimaryContext extends PrimaryContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterThisPrimary) {
+			listener.enterThisPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitThisPrimary) {
+			listener.exitThisPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitThisPrimary) {
+			return visitor.visitThisPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class SuperPrimaryContext extends PrimaryContext {
 	public SUPER(): TerminalNode { return this.getToken(ApexParser.SUPER, 0); }
 	constructor(ctx: PrimaryContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSuperPrimary) {
+			listener.enterSuperPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSuperPrimary) {
+			listener.exitSuperPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSuperPrimary) {
+			return visitor.visitSuperPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class LiteralPrimaryContext extends PrimaryContext {
@@ -7613,6 +9556,26 @@ export class LiteralPrimaryContext extends PrimaryContext {
 	constructor(ctx: PrimaryContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterLiteralPrimary) {
+			listener.enterLiteralPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitLiteralPrimary) {
+			listener.exitLiteralPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitLiteralPrimary) {
+			return visitor.visitLiteralPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 export class TypeRefPrimaryContext extends PrimaryContext {
@@ -7625,6 +9588,26 @@ export class TypeRefPrimaryContext extends PrimaryContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterTypeRefPrimary) {
+			listener.enterTypeRefPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitTypeRefPrimary) {
+			listener.exitTypeRefPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitTypeRefPrimary) {
+			return visitor.visitTypeRefPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class IdPrimaryContext extends PrimaryContext {
 	public id(): IdContext {
@@ -7634,6 +9617,26 @@ export class IdPrimaryContext extends PrimaryContext {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
 	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterIdPrimary) {
+			listener.enterIdPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitIdPrimary) {
+			listener.exitIdPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitIdPrimary) {
+			return visitor.visitIdPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 export class SoqlPrimaryContext extends PrimaryContext {
 	public soqlLiteral(): SoqlLiteralContext {
@@ -7642,6 +9645,26 @@ export class SoqlPrimaryContext extends PrimaryContext {
 	constructor(ctx: PrimaryContext) {
 		super(ctx.parent, ctx.invokingState);
 		this.copyFrom(ctx);
+	}
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSoqlPrimary) {
+			listener.enterSoqlPrimary(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSoqlPrimary) {
+			listener.exitSoqlPrimary(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSoqlPrimary) {
+			return visitor.visitSoqlPrimary(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
 	}
 }
 
@@ -7662,6 +9685,26 @@ export class MethodCallContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_methodCall; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMethodCall) {
+			listener.enterMethodCall(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMethodCall) {
+			listener.exitMethodCall(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMethodCall) {
+			return visitor.visitMethodCall(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7679,6 +9722,26 @@ export class DotMethodCallContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_dotMethodCall; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterDotMethodCall) {
+			listener.enterDotMethodCall(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitDotMethodCall) {
+			listener.exitDotMethodCall(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitDotMethodCall) {
+			return visitor.visitDotMethodCall(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7706,6 +9769,26 @@ export class CreatorContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_creator; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCreator) {
+			listener.enterCreator(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCreator) {
+			listener.exitCreator(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCreator) {
+			return visitor.visitCreator(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7733,6 +9816,26 @@ export class CreatedNameContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_createdName; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterCreatedName) {
+			listener.enterCreatedName(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitCreatedName) {
+			listener.exitCreatedName(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitCreatedName) {
+			return visitor.visitCreatedName(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7750,6 +9853,26 @@ export class IdCreatedNamePairContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_idCreatedNamePair; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterIdCreatedNamePair) {
+			listener.enterIdCreatedNamePair(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitIdCreatedNamePair) {
+			listener.exitIdCreatedNamePair(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitIdCreatedNamePair) {
+			return visitor.visitIdCreatedNamePair(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7761,6 +9884,26 @@ export class NoRestContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_noRest; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterNoRest) {
+			listener.enterNoRest(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitNoRest) {
+			listener.exitNoRest(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitNoRest) {
+			return visitor.visitNoRest(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7773,6 +9916,26 @@ export class ClassCreatorRestContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_classCreatorRest; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterClassCreatorRest) {
+			listener.enterClassCreatorRest(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitClassCreatorRest) {
+			listener.exitClassCreatorRest(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitClassCreatorRest) {
+			return visitor.visitClassCreatorRest(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7790,6 +9953,26 @@ export class ArrayCreatorRestContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_arrayCreatorRest; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArrayCreatorRest) {
+			listener.enterArrayCreatorRest(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArrayCreatorRest) {
+			listener.exitArrayCreatorRest(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArrayCreatorRest) {
+			return visitor.visitArrayCreatorRest(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7819,6 +10002,26 @@ export class MapCreatorRestContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_mapCreatorRest; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMapCreatorRest) {
+			listener.enterMapCreatorRest(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMapCreatorRest) {
+			listener.exitMapCreatorRest(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMapCreatorRest) {
+			return visitor.visitMapCreatorRest(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7838,6 +10041,26 @@ export class MapCreatorRestPairContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_mapCreatorRestPair; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterMapCreatorRestPair) {
+			listener.enterMapCreatorRestPair(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitMapCreatorRestPair) {
+			listener.exitMapCreatorRestPair(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitMapCreatorRestPair) {
+			return visitor.visitMapCreatorRestPair(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7867,6 +10090,26 @@ export class SetCreatorRestContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_setCreatorRest; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSetCreatorRest) {
+			listener.enterSetCreatorRest(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSetCreatorRest) {
+			listener.exitSetCreatorRest(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSetCreatorRest) {
+			return visitor.visitSetCreatorRest(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7881,6 +10124,26 @@ export class ArgumentsContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_arguments; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterArguments) {
+			listener.enterArguments(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitArguments) {
+			listener.exitArguments(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitArguments) {
+			return visitor.visitArguments(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7909,6 +10172,26 @@ export class SoqlLiteralContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_soqlLiteral; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterSoqlLiteral) {
+			listener.enterSoqlLiteral(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitSoqlLiteral) {
+			listener.exitSoqlLiteral(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitSoqlLiteral) {
+			return visitor.visitSoqlLiteral(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7932,6 +10215,26 @@ export class IdContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_id; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterId) {
+			listener.enterId(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitId) {
+			listener.exitId(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitId) {
+			return visitor.visitId(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 
@@ -7996,6 +10299,26 @@ export class AnyIdContext extends ParserRuleContext {
 	}
 	// @Override
 	public get ruleIndex(): number { return ApexParser.RULE_anyId; }
+	// @Override
+	public enterRule(listener: ApexParserListener): void {
+		if (listener.enterAnyId) {
+			listener.enterAnyId(this);
+		}
+	}
+	// @Override
+	public exitRule(listener: ApexParserListener): void {
+		if (listener.exitAnyId) {
+			listener.exitAnyId(this);
+		}
+	}
+	// @Override
+	public accept<Result>(visitor: ApexParserVisitor<Result>): Result {
+		if (visitor.visitAnyId) {
+			return visitor.visitAnyId(this);
+		} else {
+			return visitor.visitChildren(this);
+		}
+	}
 }
 
 

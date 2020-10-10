@@ -41,9 +41,6 @@ export class SyntaxException {
 
 export class ThrowingErrorListener implements ANTLRErrorListener<Token> {
 
-    constructor() {
-    }
-
     syntaxError(recognizer: Recognizer<Token, any>, 
         offendingSymbol: Token, line: number, charPositionInLine: number, msg: string, 
         e: RecognitionException | undefined): any {

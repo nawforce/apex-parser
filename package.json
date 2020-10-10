@@ -9,19 +9,15 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json lib",
-    "antlr4ts": "cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4",
-    "check": "node -e 'require(\"./lib/index.js\").check()'"
+    "antlr4ts": "cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4"
   },
   "files": [
     "lib/**/*"
   ],
   "dependencies": {
-    "antlr4ts": "^0.5.0-alpha.3",
-    "node-dir": "^0.1.17"
+    "antlr4ts": "^0.5.0-alpha.3"
   },
   "devDependencies": {
-    "@types/node": "^14.11.8",
-    "@types/node-dir": "0.0.33",
     "@types/jest": "^26.0.9",
     "antlr4ts-cli": "^0.5.0-alpha.3",
     "jest": "^26.2.2",

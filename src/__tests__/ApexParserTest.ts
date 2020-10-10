@@ -39,21 +39,6 @@ test('Compilation Unit', () => {
     expect(context.typeDeclaration).toBeTruthy()
 })
 
-test('Compilation Unit (bug test)', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", `public class Hello {
-        public testMethod void func() {
-            System.runAs(u) {
-            }
-        }
-    }`))
-    let tokens  = new CommonTokenStream(lexer);
-
-    let parser = new ApexParser(tokens)
-    let context = parser.compilationUnit()
-
-    expect(context.typeDeclaration).toBeTruthy()
-})
-
 test('Compilation Unit (throwing errors)', () => {
 
     let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {"))

@@ -184,6 +184,7 @@ LT              : '<';
 BANG            : '!';
 TILDE           : '~';
 QUESTION        : '?';
+QUESTIONDOT     : '?.';
 COLON           : ':';
 EQUAL           : '==';
 TRIPLEEQUAL     : '===';

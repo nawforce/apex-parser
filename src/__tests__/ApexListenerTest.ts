@@ -16,7 +16,7 @@ class TestListener implements ApexParserListener {
 
 test('Listener Generates Events', () => {
 
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {}"))
+    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello { public void func(){} }"))
     let tokens = new CommonTokenStream(lexer);
 
     let parser = new ApexParser(tokens)
@@ -28,5 +28,5 @@ test('Listener Generates Events', () => {
     const listener = new TestListener()
     ParseTreeWalker.DEFAULT.walk(listener as ApexParserListener, cu)
 
-    expect(listener.methodCount == 1)
+    expect(listener.methodCount).toBe(1)
 })

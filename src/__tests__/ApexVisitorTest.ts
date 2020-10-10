@@ -22,7 +22,7 @@ class TestVisitor extends AbstractParseTreeVisitor<number> implements ApexParser
 
 test('Vistor is visited', () => {
 
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {}"))
+    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello { public void func(){} }"))
     let tokens = new CommonTokenStream(lexer);
 
     let parser = new ApexParser(tokens)
@@ -34,5 +34,5 @@ test('Vistor is visited', () => {
     const visitor = new TestVisitor()
     visitor.visit(cu)
 
-    expect(visitor.methodCount == 1)
+    expect(visitor.methodCount).toBe(1)
 })

@@ -119,6 +119,45 @@ import { MapCreatorRestPairContext } from "./ApexParser";
 import { SetCreatorRestContext } from "./ApexParser";
 import { ArgumentsContext } from "./ApexParser";
 import { SoqlLiteralContext } from "./ApexParser";
+import { QueryContext } from "./ApexParser";
+import { SubQueryContext } from "./ApexParser";
+import { SelectListContext } from "./ApexParser";
+import { SelectEntryContext } from "./ApexParser";
+import { FieldNameContext } from "./ApexParser";
+import { FromNameListContext } from "./ApexParser";
+import { SubFieldListContext } from "./ApexParser";
+import { SubFieldEntryContext } from "./ApexParser";
+import { SoqlFunctionContext } from "./ApexParser";
+import { TypeOfContext } from "./ApexParser";
+import { WhenClauseContext } from "./ApexParser";
+import { ElseClauseContext } from "./ApexParser";
+import { FieldNameListContext } from "./ApexParser";
+import { UsingScopeContext } from "./ApexParser";
+import { WhereClauseContext } from "./ApexParser";
+import { LogicalExpressionContext } from "./ApexParser";
+import { ConditionalExpressionContext } from "./ApexParser";
+import { FieldExpressionContext } from "./ApexParser";
+import { ComparisonOperatorContext } from "./ApexParser";
+import { ValueContext } from "./ApexParser";
+import { ValueListContext } from "./ApexParser";
+import { CurrencyValueContext } from "./ApexParser";
+import { WithClauseContext } from "./ApexParser";
+import { FilteringExpressionContext } from "./ApexParser";
+import { DataCategorySelectionContext } from "./ApexParser";
+import { DataCategoryNameContext } from "./ApexParser";
+import { FilteringSelectorContext } from "./ApexParser";
+import { GroupByClauseContext } from "./ApexParser";
+import { OrderByClauseContext } from "./ApexParser";
+import { FieldOrderListContext } from "./ApexParser";
+import { FieldOrderContext } from "./ApexParser";
+import { LimitClauseContext } from "./ApexParser";
+import { OffsetClauseContext } from "./ApexParser";
+import { AllRowsClauseContext } from "./ApexParser";
+import { ForClausesContext } from "./ApexParser";
+import { BoundExpressionContext } from "./ApexParser";
+import { DateFormulaContext } from "./ApexParser";
+import { SignedIntegerContext } from "./ApexParser";
+import { SoqlIdContext } from "./ApexParser";
 import { IdContext } from "./ApexParser";
 import { AnyIdContext } from "./ApexParser";
 
@@ -971,6 +1010,279 @@ export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitSoqlLiteral?: (ctx: SoqlLiteralContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.query`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitQuery?: (ctx: QueryContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.subQuery`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSubQuery?: (ctx: SubQueryContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.selectList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSelectList?: (ctx: SelectListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.selectEntry`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSelectEntry?: (ctx: SelectEntryContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldName?: (ctx: FieldNameContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fromNameList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFromNameList?: (ctx: FromNameListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.subFieldList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSubFieldList?: (ctx: SubFieldListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.subFieldEntry`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSubFieldEntry?: (ctx: SubFieldEntryContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.soqlFunction`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoqlFunction?: (ctx: SoqlFunctionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.typeOf`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitTypeOf?: (ctx: TypeOfContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.whenClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitWhenClause?: (ctx: WhenClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.elseClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitElseClause?: (ctx: ElseClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldNameList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldNameList?: (ctx: FieldNameListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.usingScope`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitUsingScope?: (ctx: UsingScopeContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.whereClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitWhereClause?: (ctx: WhereClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.logicalExpression`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitLogicalExpression?: (ctx: LogicalExpressionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.conditionalExpression`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitConditionalExpression?: (ctx: ConditionalExpressionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldExpression`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldExpression?: (ctx: FieldExpressionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.comparisonOperator`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitComparisonOperator?: (ctx: ComparisonOperatorContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.value`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitValue?: (ctx: ValueContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.valueList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitValueList?: (ctx: ValueListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.currencyValue`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitCurrencyValue?: (ctx: CurrencyValueContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.withClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitWithClause?: (ctx: WithClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.filteringExpression`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFilteringExpression?: (ctx: FilteringExpressionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.dataCategorySelection`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitDataCategorySelection?: (ctx: DataCategorySelectionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.dataCategoryName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitDataCategoryName?: (ctx: DataCategoryNameContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.filteringSelector`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFilteringSelector?: (ctx: FilteringSelectorContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.groupByClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitGroupByClause?: (ctx: GroupByClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.orderByClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitOrderByClause?: (ctx: OrderByClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldOrderList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldOrderList?: (ctx: FieldOrderListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldOrder`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldOrder?: (ctx: FieldOrderContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.limitClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitLimitClause?: (ctx: LimitClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.offsetClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitOffsetClause?: (ctx: OffsetClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.allRowsClause`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitAllRowsClause?: (ctx: AllRowsClauseContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.forClauses`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitForClauses?: (ctx: ForClausesContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.boundExpression`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitBoundExpression?: (ctx: BoundExpressionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.dateFormula`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitDateFormula?: (ctx: DateFormulaContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.signedInteger`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSignedInteger?: (ctx: SignedIntegerContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.soqlId`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoqlId?: (ctx: SoqlIdContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `ApexParser.id`.

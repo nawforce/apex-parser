@@ -54,6 +54,20 @@ test('Compilation Unit (bug test)', () => {
     expect(context.typeDeclaration).toBeTruthy()
 })
 
+test('Compilation Unit (inline SOQL)', () => {
+    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", `public class Hello {
+        public void func() {
+            List<Account> accounts = [Select Id from Accounts];
+        }
+    }`))
+    let tokens  = new CommonTokenStream(lexer);
+
+    let parser = new ApexParser(tokens)
+    let context = parser.compilationUnit()
+
+    expect(context.typeDeclaration).toBeTruthy()
+})
+
 test('Compilation Unit (throwing errors)', () => {
 
     let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {"))
@@ -81,3 +95,14 @@ test('Trigger Unit', () => {
 
     expect(context).toBeTruthy()
 })
+
+test('SOQL Query', () => {
+    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "Select Id from Account"))
+    let tokens  = new CommonTokenStream(lexer);
+
+    let parser = new ApexParser(tokens)
+    let context = parser.query()
+
+    expect(context).toBeTruthy()
+})
+

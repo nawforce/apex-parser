@@ -1,12 +1,12 @@
 apex-parser
 ===========
 
-Parser for Salesforce Apex Language. This is based on a ANTLR4 grammar (see antlr/ApexParser.g4) using antlr4ts to generate a parser/lexer in Typescript. The grammar has been extensively used for parsing with Java but not with antlr4ts.
+Parser for Salesforce Apex & SOQL Languages. This is based on an ANTLR4 grammar (see antlr/ApexParser.g4) using antlr4ts to generate a parser/lexer in Typescript. 
 
-This module just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what
-is provided by antlr4ts. 
+This module just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by antlr4ts. See [pkgforce](https://github.com/nawforce/pkgforce) for example code on how this may be used. 
 
-As Apex is a case-insenstive language you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. You can find some minimal examples in the src/\__test__ directory. Supports parsing of class & trigger files but not anonymous code snippets.
+As Apex & SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL is
+automtaically parsed, but you may also parse SOQL directly. You can find some minimal examples in the src/\__test__ directory. Supports parsing of class & trigger files but not yet anonymous code snippets.
 
 ### Example
 To parse a class file:
@@ -25,6 +25,7 @@ If you change the Parser or Lexer grammar files you will need to update the pars
     npm run antlr4ts 
 
 ### History
+    2.6.0 - Add SOQL parsing support
     2.5.0 - Allow safe navigation operator ?.
     2.4.0 - Enable Listener & Visitor use
     2.3.0 - Removed modifers from enhanced for loop

@@ -25,6 +25,7 @@ If you change the Parser or Lexer grammar files you will need to update the pars
     npm run antlr4ts 
 
 ### History
+    2.6.1 - Dependency security fixes
     2.6.0 - Add SOQL parsing support
     2.5.0 - Allow safe navigation operator ?.
     2.4.0 - Enable Listener & Visitor use

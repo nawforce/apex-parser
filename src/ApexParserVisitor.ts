@@ -10,6 +10,7 @@ import { LiteralPrimaryContext } from "./ApexParser";
 import { TypeRefPrimaryContext } from "./ApexParser";
 import { IdPrimaryContext } from "./ApexParser";
 import { SoqlPrimaryContext } from "./ApexParser";
+import { SoslPrimaryContext } from "./ApexParser";
 import { PrimaryExpressionContext } from "./ApexParser";
 import { DotExpressionContext } from "./ApexParser";
 import { ArrayExpressionContext } from "./ApexParser";
@@ -158,6 +159,16 @@ import { BoundExpressionContext } from "./ApexParser";
 import { DateFormulaContext } from "./ApexParser";
 import { SignedIntegerContext } from "./ApexParser";
 import { SoqlIdContext } from "./ApexParser";
+import { SoslLiteralContext } from "./ApexParser";
+import { SoslClausesContext } from "./ApexParser";
+import { SearchGroupContext } from "./ApexParser";
+import { FieldSpecListContext } from "./ApexParser";
+import { FieldSpecContext } from "./ApexParser";
+import { FieldListContext } from "./ApexParser";
+import { UpdateListContext } from "./ApexParser";
+import { UpdateTypeContext } from "./ApexParser";
+import { NetworkListContext } from "./ApexParser";
+import { SoslIdContext } from "./ApexParser";
 import { IdContext } from "./ApexParser";
 import { AnyIdContext } from "./ApexParser";
 
@@ -225,6 +236,14 @@ export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitSoqlPrimary?: (ctx: SoqlPrimaryContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `soslPrimary`
+	 * labeled alternative in `ApexParser.primary`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoslPrimary?: (ctx: SoslPrimaryContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by the `primaryExpression`
@@ -1283,6 +1302,76 @@ export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitSoqlId?: (ctx: SoqlIdContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.soslLiteral`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoslLiteral?: (ctx: SoslLiteralContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.soslClauses`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoslClauses?: (ctx: SoslClausesContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.searchGroup`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSearchGroup?: (ctx: SearchGroupContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldSpecList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldSpecList?: (ctx: FieldSpecListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldSpec`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldSpec?: (ctx: FieldSpecContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.fieldList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitFieldList?: (ctx: FieldListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.updateList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitUpdateList?: (ctx: UpdateListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.updateType`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitUpdateType?: (ctx: UpdateTypeContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.networkList`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitNetworkList?: (ctx: NetworkListContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.soslId`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoslId?: (ctx: SoslIdContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `ApexParser.id`.

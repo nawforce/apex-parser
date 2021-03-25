@@ -10,6 +10,7 @@ import { LiteralPrimaryContext } from "./ApexParser";
 import { TypeRefPrimaryContext } from "./ApexParser";
 import { IdPrimaryContext } from "./ApexParser";
 import { SoqlPrimaryContext } from "./ApexParser";
+import { SoslPrimaryContext } from "./ApexParser";
 import { PrimaryExpressionContext } from "./ApexParser";
 import { DotExpressionContext } from "./ApexParser";
 import { ArrayExpressionContext } from "./ApexParser";
@@ -158,6 +159,16 @@ import { BoundExpressionContext } from "./ApexParser";
 import { DateFormulaContext } from "./ApexParser";
 import { SignedIntegerContext } from "./ApexParser";
 import { SoqlIdContext } from "./ApexParser";
+import { SoslLiteralContext } from "./ApexParser";
+import { SoslClausesContext } from "./ApexParser";
+import { SearchGroupContext } from "./ApexParser";
+import { FieldSpecListContext } from "./ApexParser";
+import { FieldSpecContext } from "./ApexParser";
+import { FieldListContext } from "./ApexParser";
+import { UpdateListContext } from "./ApexParser";
+import { UpdateTypeContext } from "./ApexParser";
+import { NetworkListContext } from "./ApexParser";
+import { SoslIdContext } from "./ApexParser";
 import { IdContext } from "./ApexParser";
 import { AnyIdContext } from "./ApexParser";
 
@@ -257,6 +268,19 @@ export interface ApexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSoqlPrimary?: (ctx: SoqlPrimaryContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `soslPrimary`
+	 * labeled alternative in `ApexParser.primary`.
+	 * @param ctx the parse tree
+	 */
+	enterSoslPrimary?: (ctx: SoslPrimaryContext) => void;
+	/**
+	 * Exit a parse tree produced by the `soslPrimary`
+	 * labeled alternative in `ApexParser.primary`.
+	 * @param ctx the parse tree
+	 */
+	exitSoslPrimary?: (ctx: SoslPrimaryContext) => void;
 
 	/**
 	 * Enter a parse tree produced by the `primaryExpression`
@@ -1929,6 +1953,116 @@ export interface ApexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSoqlId?: (ctx: SoqlIdContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.soslLiteral`.
+	 * @param ctx the parse tree
+	 */
+	enterSoslLiteral?: (ctx: SoslLiteralContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.soslLiteral`.
+	 * @param ctx the parse tree
+	 */
+	exitSoslLiteral?: (ctx: SoslLiteralContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.soslClauses`.
+	 * @param ctx the parse tree
+	 */
+	enterSoslClauses?: (ctx: SoslClausesContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.soslClauses`.
+	 * @param ctx the parse tree
+	 */
+	exitSoslClauses?: (ctx: SoslClausesContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.searchGroup`.
+	 * @param ctx the parse tree
+	 */
+	enterSearchGroup?: (ctx: SearchGroupContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.searchGroup`.
+	 * @param ctx the parse tree
+	 */
+	exitSearchGroup?: (ctx: SearchGroupContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.fieldSpecList`.
+	 * @param ctx the parse tree
+	 */
+	enterFieldSpecList?: (ctx: FieldSpecListContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.fieldSpecList`.
+	 * @param ctx the parse tree
+	 */
+	exitFieldSpecList?: (ctx: FieldSpecListContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.fieldSpec`.
+	 * @param ctx the parse tree
+	 */
+	enterFieldSpec?: (ctx: FieldSpecContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.fieldSpec`.
+	 * @param ctx the parse tree
+	 */
+	exitFieldSpec?: (ctx: FieldSpecContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.fieldList`.
+	 * @param ctx the parse tree
+	 */
+	enterFieldList?: (ctx: FieldListContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.fieldList`.
+	 * @param ctx the parse tree
+	 */
+	exitFieldList?: (ctx: FieldListContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.updateList`.
+	 * @param ctx the parse tree
+	 */
+	enterUpdateList?: (ctx: UpdateListContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.updateList`.
+	 * @param ctx the parse tree
+	 */
+	exitUpdateList?: (ctx: UpdateListContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.updateType`.
+	 * @param ctx the parse tree
+	 */
+	enterUpdateType?: (ctx: UpdateTypeContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.updateType`.
+	 * @param ctx the parse tree
+	 */
+	exitUpdateType?: (ctx: UpdateTypeContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.networkList`.
+	 * @param ctx the parse tree
+	 */
+	enterNetworkList?: (ctx: NetworkListContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.networkList`.
+	 * @param ctx the parse tree
+	 */
+	exitNetworkList?: (ctx: NetworkListContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.soslId`.
+	 * @param ctx the parse tree
+	 */
+	enterSoslId?: (ctx: SoslIdContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.soslId`.
+	 * @param ctx the parse tree
+	 */
+	exitSoslId?: (ctx: SoslIdContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `ApexParser.id`.

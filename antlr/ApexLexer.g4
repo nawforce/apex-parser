@@ -154,6 +154,8 @@ SECURITY_ENFORCED : 'security_enforced';
 REFERENCE       : 'reference';
 CUBE            : 'cube';
 FORMAT          : 'format';
+TRACKING        : 'tracking';
+VIEWSTAT        : 'viewstat';
 
 // SOQL Date formulas
 YESTERDAY                 : 'yesterday';
@@ -197,6 +199,42 @@ LAST_N_FISCAL_YEARS_N     : 'last_n_fiscal_years';
 // SOQL Date literal
 DateLiteral: Digit Digit Digit Digit '-' Digit Digit '-' Digit Digit;
 DateTimeLiteral: DateLiteral 'T' Digit Digit ':' Digit Digit ':' Digit Digit ('Z' | (('+' | '-') Digit+ ( ':' Digit+)? ));
+
+// SOSL Keywords
+FIND                      : 'find';
+EMAIL                     : 'email';
+NAME                      : 'name';
+PHONE                     : 'phone';
+SIDEBAR                   : 'sidebar';
+FIELDS                    : 'fields';
+METADATA                  : 'metadata';
+PRICEBOOKID               : 'pricebookid';
+NETWORK                   : 'network';
+SNIPPET                   : 'snippet';
+TARGET_LENGTH             : 'target_length';
+DIVISION                  : 'division';
+RETURNING                 : 'returning';
+LISTVIEW                  : 'listview';
+
+FindLiteral
+    :   '[' WS? 'find' WS '{' FindCharacters? '}'
+    ;
+
+fragment
+FindCharacters
+    :   FindCharacter+
+    ;
+
+fragment
+FindCharacter
+    :   ~[}\\]
+    |   FindEscapeSequence
+    ;
+
+fragment
+FindEscapeSequence
+    :   '\\' [+\-&|!(){}^"~*?:'\\]
+    ;
 
 // §3.10.1 Integer Literals
 
@@ -280,8 +318,8 @@ GT              : '>';
 LT              : '<';
 BANG            : '!';
 TILDE           : '~';
-QUESTION        : '?';
 QUESTIONDOT     : '?.';
+QUESTION        : '?';
 COLON           : ':';
 EQUAL           : '==';
 TRIPLEEQUAL     : '===';

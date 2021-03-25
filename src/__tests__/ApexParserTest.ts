@@ -5,11 +5,11 @@ import { CommonTokenStream } from 'antlr4ts';
 import { ThrowingErrorListener, SyntaxException } from "../ThrowingErrorListener";
 
 test('Boolean Literal', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "true"))
-    let tokens  = new CommonTokenStream(lexer);
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "true"))
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.literal()
+    const parser = new ApexParser(tokens)
+    const context = parser.literal()
 
     expect(context).toBeInstanceOf(LiteralContext)
     expect(context.BooleanLiteral()).toBeTruthy()
@@ -17,63 +17,62 @@ test('Boolean Literal', () => {
 })
 
 test('Expression', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "a * 5"))
-    let tokens  = new CommonTokenStream(lexer);
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "a * 5"))
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.expression()
+    const parser = new ApexParser(tokens)
+    const context = parser.expression()
 
     expect(context).toBeInstanceOf(Arth1ExpressionContext)
 
-    let arthExpression = context as Arth1ExpressionContext
+    const arthExpression = context as Arth1ExpressionContext
     expect(arthExpression.expression().length).toBe(2)
 })
 
 test('Compilation Unit', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {}"))
-    let tokens  = new CommonTokenStream(lexer);
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {}"))
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.compilationUnit()
+    const parser = new ApexParser(tokens)
+    const context = parser.compilationUnit()
 
     expect(context.typeDeclaration).toBeTruthy()
 })
 
 test('Compilation Unit (bug test)', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", `public class Hello {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", `public class Hello {
         public testMethod void func() {
             System.runAs(u) {
             }
         }
     }`))
-    let tokens  = new CommonTokenStream(lexer);
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.compilationUnit()
+    const parser = new ApexParser(tokens)
+    const context = parser.compilationUnit()
 
     expect(context.typeDeclaration).toBeTruthy()
 })
 
 test('Compilation Unit (inline SOQL)', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", `public class Hello {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", `public class Hello {
         public void func() {
             List<Account> accounts = [Select Id from Accounts];
         }
     }`))
-    let tokens  = new CommonTokenStream(lexer);
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.compilationUnit()
+    const parser = new ApexParser(tokens)
+    const context = parser.compilationUnit()
 
     expect(context.typeDeclaration).toBeTruthy()
 })
 
 test('Compilation Unit (throwing errors)', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {"))
+    const tokens  = new CommonTokenStream(lexer);
 
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello {"))
-    let tokens  = new CommonTokenStream(lexer);
-
-    let parser = new ApexParser(tokens)
+    const parser = new ApexParser(tokens)
 
     parser.removeErrorListeners()
     parser.addErrorListener(new ThrowingErrorListener());
@@ -87,22 +86,31 @@ test('Compilation Unit (throwing errors)', () => {
 })
 
 test('Trigger Unit', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "trigger test on Account (before update, after update) {}"))
-    let tokens  = new CommonTokenStream(lexer);
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "trigger test on Account (before update, after update) {}"))
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.triggerUnit()
+    const parser = new ApexParser(tokens)
+    const context = parser.triggerUnit()
 
     expect(context).toBeTruthy()
 })
 
 test('SOQL Query', () => {
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "Select Id from Account"))
-    let tokens  = new CommonTokenStream(lexer);
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "Select Id from Account"))
+    const tokens  = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
-    let context = parser.query()
+    const parser = new ApexParser(tokens)
+    const context = parser.query()
 
     expect(context).toBeTruthy()
 })
 
+test('SOSL Query', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "[Find {something} RETURNING Account]"))
+    const tokens  = new CommonTokenStream(lexer);
+
+    const parser = new ApexParser(tokens)
+    const context = parser.soslLiteral()
+
+    expect(context).toBeTruthy()
+})

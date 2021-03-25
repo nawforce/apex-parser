@@ -25,6 +25,7 @@ If you change the Parser or Lexer grammar files you will need to update the pars
     npm run antlr4ts 
 
 ### History
+    2.7.1 - Bugfix for 'Network' identifier
     2.7.0 - Support inline SOSL queries
     2.6.1 - Dependency security fixes
     2.6.0 - Add SOQL parsing support

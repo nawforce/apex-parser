@@ -896,7 +896,7 @@ id
     | NEXT_FISCAL_YEAR
     | NEXT_N_FISCAL_YEARS_N
     | LAST_N_FISCAL_YEARS_N
-    // SOQL Keywords
+    // SOSL Keywords
     | FIND
     | EMAIL
     | NAME
@@ -905,6 +905,7 @@ id
     | FIELDS
     | METADATA
     | PRICEBOOKID
+    | NETWORK
     | SNIPPET
     | TARGET_LENGTH
     | DIVISION
@@ -1058,7 +1059,7 @@ anyId
     | NEXT_FISCAL_YEAR
     | NEXT_N_FISCAL_YEARS_N
     | LAST_N_FISCAL_YEARS_N
-    // SOQL Keywords
+    // SOSL Keywords
     | FIND
     | EMAIL
     | NAME
@@ -1067,6 +1068,7 @@ anyId
     | FIELDS
     | METADATA
     | PRICEBOOKID
+    | NETWORK
     | SNIPPET
     | TARGET_LENGTH
     | DIVISION

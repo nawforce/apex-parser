@@ -3,7 +3,6 @@
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
-import { SubPrimaryContext } from "./ApexParser";
 import { ThisPrimaryContext } from "./ApexParser";
 import { SuperPrimaryContext } from "./ApexParser";
 import { LiteralPrimaryContext } from "./ApexParser";
@@ -17,6 +16,7 @@ import { ArrayExpressionContext } from "./ApexParser";
 import { MethodCallExpressionContext } from "./ApexParser";
 import { NewExpressionContext } from "./ApexParser";
 import { CastExpressionContext } from "./ApexParser";
+import { SubExpressionContext } from "./ApexParser";
 import { PostOpExpressionContext } from "./ApexParser";
 import { PreOpExpressionContext } from "./ApexParser";
 import { NegExpressionContext } from "./ApexParser";
@@ -129,6 +129,7 @@ import { FromNameListContext } from "./ApexParser";
 import { SubFieldListContext } from "./ApexParser";
 import { SubFieldEntryContext } from "./ApexParser";
 import { SoqlFunctionContext } from "./ApexParser";
+import { DateFieldNameContext } from "./ApexParser";
 import { TypeOfContext } from "./ApexParser";
 import { WhenClauseContext } from "./ApexParser";
 import { ElseClauseContext } from "./ApexParser";
@@ -178,19 +179,6 @@ import { AnyIdContext } from "./ApexParser";
  * `ApexParser`.
  */
 export interface ApexParserListener extends ParseTreeListener {
-	/**
-	 * Enter a parse tree produced by the `subPrimary`
-	 * labeled alternative in `ApexParser.primary`.
-	 * @param ctx the parse tree
-	 */
-	enterSubPrimary?: (ctx: SubPrimaryContext) => void;
-	/**
-	 * Exit a parse tree produced by the `subPrimary`
-	 * labeled alternative in `ApexParser.primary`.
-	 * @param ctx the parse tree
-	 */
-	exitSubPrimary?: (ctx: SubPrimaryContext) => void;
-
 	/**
 	 * Enter a parse tree produced by the `thisPrimary`
 	 * labeled alternative in `ApexParser.primary`.
@@ -359,6 +347,19 @@ export interface ApexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitCastExpression?: (ctx: CastExpressionContext) => void;
+
+	/**
+	 * Enter a parse tree produced by the `subExpression`
+	 * labeled alternative in `ApexParser.expression`.
+	 * @param ctx the parse tree
+	 */
+	enterSubExpression?: (ctx: SubExpressionContext) => void;
+	/**
+	 * Exit a parse tree produced by the `subExpression`
+	 * labeled alternative in `ApexParser.expression`.
+	 * @param ctx the parse tree
+	 */
+	exitSubExpression?: (ctx: SubExpressionContext) => void;
 
 	/**
 	 * Enter a parse tree produced by the `postOpExpression`
@@ -1623,6 +1624,17 @@ export interface ApexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSoqlFunction?: (ctx: SoqlFunctionContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.dateFieldName`.
+	 * @param ctx the parse tree
+	 */
+	enterDateFieldName?: (ctx: DateFieldNameContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.dateFieldName`.
+	 * @param ctx the parse tree
+	 */
+	exitDateFieldName?: (ctx: DateFieldNameContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `ApexParser.typeOf`.

@@ -3,7 +3,6 @@
 
 import { ParseTreeVisitor } from "antlr4ts/tree/ParseTreeVisitor";
 
-import { SubPrimaryContext } from "./ApexParser";
 import { ThisPrimaryContext } from "./ApexParser";
 import { SuperPrimaryContext } from "./ApexParser";
 import { LiteralPrimaryContext } from "./ApexParser";
@@ -17,6 +16,7 @@ import { ArrayExpressionContext } from "./ApexParser";
 import { MethodCallExpressionContext } from "./ApexParser";
 import { NewExpressionContext } from "./ApexParser";
 import { CastExpressionContext } from "./ApexParser";
+import { SubExpressionContext } from "./ApexParser";
 import { PostOpExpressionContext } from "./ApexParser";
 import { PreOpExpressionContext } from "./ApexParser";
 import { NegExpressionContext } from "./ApexParser";
@@ -129,6 +129,7 @@ import { FromNameListContext } from "./ApexParser";
 import { SubFieldListContext } from "./ApexParser";
 import { SubFieldEntryContext } from "./ApexParser";
 import { SoqlFunctionContext } from "./ApexParser";
+import { DateFieldNameContext } from "./ApexParser";
 import { TypeOfContext } from "./ApexParser";
 import { WhenClauseContext } from "./ApexParser";
 import { ElseClauseContext } from "./ApexParser";
@@ -181,14 +182,6 @@ import { AnyIdContext } from "./ApexParser";
  * operations with no return type.
  */
 export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
-	/**
-	 * Visit a parse tree produced by the `subPrimary`
-	 * labeled alternative in `ApexParser.primary`.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	visitSubPrimary?: (ctx: SubPrimaryContext) => Result;
-
 	/**
 	 * Visit a parse tree produced by the `thisPrimary`
 	 * labeled alternative in `ApexParser.primary`.
@@ -292,6 +285,14 @@ export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitCastExpression?: (ctx: CastExpressionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by the `subExpression`
+	 * labeled alternative in `ApexParser.expression`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSubExpression?: (ctx: SubExpressionContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by the `postOpExpression`
@@ -1092,6 +1093,13 @@ export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitSoqlFunction?: (ctx: SoqlFunctionContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.dateFieldName`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitDateFieldName?: (ctx: DateFieldNameContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `ApexParser.typeOf`.

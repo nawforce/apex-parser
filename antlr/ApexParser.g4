@@ -425,6 +425,7 @@ expression
     | methodCall                                                                                      # methodCallExpression
     | NEW creator                                                                                     # newExpression
     | LPAREN typeRef RPAREN expression                                                                # castExpression
+    | LPAREN expression RPAREN                                                                        # subExpression
     | expression (INC | DEC)                                                                          # postOpExpression
     | (ADD|SUB|INC|DEC) expression                                                                    # preOpExpression
     | (TILDE|BANG) expression                                                                         # negExpression
@@ -458,8 +459,7 @@ expression
     ;
 
 primary
-    : LPAREN expression RPAREN                                                                       # subPrimary
-    | THIS                                                                                           # thisPrimary
+    : THIS                                                                                           # thisPrimary
     | SUPER                                                                                          # superPrimary
     | literal                                                                                        # literalPrimary
     | typeRef DOT CLASS                                                                              # typeRefPrimary
@@ -543,7 +543,8 @@ subQuery
         FROM fromNameList
         whereClause?
         orderByClause?
-        limitClause?;
+        limitClause?
+        forClauses;
 
 selectList
     : selectEntry (COMMA selectEntry)*;
@@ -578,6 +579,24 @@ soqlFunction
     | SUM LPAREN fieldName RPAREN
     | TOLABEL LPAREN fieldName RPAREN
     | FORMAT LPAREN fieldName RPAREN
+    | CALENDAR_MONTH LPAREN dateFieldName RPAREN
+    | CALENDAR_QUARTER LPAREN dateFieldName RPAREN
+    | CALENDAR_YEAR LPAREN dateFieldName RPAREN
+    | DAY_IN_MONTH LPAREN dateFieldName RPAREN
+    | DAY_IN_WEEK LPAREN dateFieldName RPAREN
+    | DAY_IN_YEAR LPAREN dateFieldName RPAREN
+    | DAY_ONLY LPAREN dateFieldName RPAREN
+    | FISCAL_MONTH LPAREN dateFieldName RPAREN
+    | FISCAL_QUARTER LPAREN dateFieldName RPAREN
+    | FISCAL_YEAR LPAREN dateFieldName RPAREN
+    | HOUR_IN_DAY LPAREN dateFieldName RPAREN
+    | WEEK_IN_MONTH LPAREN dateFieldName RPAREN
+    | WEEK_IN_YEAR LPAREN dateFieldName RPAREN
+    ;
+
+ dateFieldName
+    : CONVERT_TIMEZONE LPAREN fieldName RPAREN
+    | fieldName
     ;
 
 typeOf
@@ -785,7 +804,7 @@ updateType
     ;
 
 soslId
-    : id;
+    : id (DOT soslId)*;
 
 // Identifiers
 
@@ -858,6 +877,21 @@ id
     | FORMAT
     | TRACKING
     | VIEWSTAT
+    // SOQL date functions
+    | CALENDAR_MONTH
+    | CALENDAR_QUARTER
+    | CALENDAR_YEAR
+    | DAY_IN_MONTH
+    | DAY_IN_WEEK
+    | DAY_IN_YEAR
+    | DAY_ONLY
+    | FISCAL_MONTH
+    | FISCAL_QUARTER
+    | FISCAL_YEAR
+    | HOUR_IN_DAY
+    | WEEK_IN_MONTH
+    | WEEK_IN_YEAR
+    | CONVERT_TIMEZONE
     // SOQL date formulas
     | YESTERDAY
     | TODAY
@@ -1021,6 +1055,21 @@ anyId
     | REFERENCE
     | CUBE
     | FORMAT
+    // SOQL date functions
+    | CALENDAR_MONTH
+    | CALENDAR_QUARTER
+    | CALENDAR_YEAR
+    | DAY_IN_MONTH
+    | DAY_IN_WEEK
+    | DAY_IN_YEAR
+    | DAY_ONLY
+    | FISCAL_MONTH
+    | FISCAL_QUARTER
+    | FISCAL_YEAR
+    | HOUR_IN_DAY
+    | WEEK_IN_MONTH
+    | WEEK_IN_YEAR
+    | CONVERT_TIMEZONE
     // SOQL date formulas
     | YESTERDAY
     | TODAY

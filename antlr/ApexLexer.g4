@@ -157,6 +157,22 @@ FORMAT          : 'format';
 TRACKING        : 'tracking';
 VIEWSTAT        : 'viewstat';
 
+// SOQL Date functions
+CALENDAR_MONTH      : 'calendar_month';
+CALENDAR_QUARTER    : 'calendar_quarter';
+CALENDAR_YEAR       : 'calendar_year';
+DAY_IN_MONTH        : 'day_in_month';
+DAY_IN_WEEK         : 'day_in_week';
+DAY_IN_YEAR         : 'day_in_year';
+DAY_ONLY            : 'day_only';
+FISCAL_MONTH        : 'fiscal_month';
+FISCAL_QUARTER      : 'fiscal_quarter';
+FISCAL_YEAR         : 'fiscal_year';
+HOUR_IN_DAY         : 'hour_in_day';
+WEEK_IN_MONTH       : 'week_in_month';
+WEEK_IN_YEAR        : 'week_in_year';
+CONVERT_TIMEZONE    : 'converttimezone';
+
 // SOQL Date formulas
 YESTERDAY                 : 'yesterday';
 TODAY                     : 'today';

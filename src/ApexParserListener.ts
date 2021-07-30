@@ -128,6 +128,7 @@ import { FieldNameContext } from "./ApexParser";
 import { FromNameListContext } from "./ApexParser";
 import { SubFieldListContext } from "./ApexParser";
 import { SubFieldEntryContext } from "./ApexParser";
+import { SoqlFieldsParameterContext } from "./ApexParser";
 import { SoqlFunctionContext } from "./ApexParser";
 import { DateFieldNameContext } from "./ApexParser";
 import { TypeOfContext } from "./ApexParser";
@@ -1613,6 +1614,17 @@ export interface ApexParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	exitSubFieldEntry?: (ctx: SubFieldEntryContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `ApexParser.soqlFieldsParameter`.
+	 * @param ctx the parse tree
+	 */
+	enterSoqlFieldsParameter?: (ctx: SoqlFieldsParameterContext) => void;
+	/**
+	 * Exit a parse tree produced by `ApexParser.soqlFieldsParameter`.
+	 * @param ctx the parse tree
+	 */
+	exitSoqlFieldsParameter?: (ctx: SoqlFieldsParameterContext) => void;
 
 	/**
 	 * Enter a parse tree produced by `ApexParser.soqlFunction`.

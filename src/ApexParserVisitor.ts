@@ -128,6 +128,7 @@ import { FieldNameContext } from "./ApexParser";
 import { FromNameListContext } from "./ApexParser";
 import { SubFieldListContext } from "./ApexParser";
 import { SubFieldEntryContext } from "./ApexParser";
+import { SoqlFieldsParameterContext } from "./ApexParser";
 import { SoqlFunctionContext } from "./ApexParser";
 import { DateFieldNameContext } from "./ApexParser";
 import { TypeOfContext } from "./ApexParser";
@@ -1086,6 +1087,13 @@ export interface ApexParserVisitor<Result> extends ParseTreeVisitor<Result> {
 	 * @return the visitor result
 	 */
 	visitSubFieldEntry?: (ctx: SubFieldEntryContext) => Result;
+
+	/**
+	 * Visit a parse tree produced by `ApexParser.soqlFieldsParameter`.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	visitSoqlFieldsParameter?: (ctx: SoqlFieldsParameterContext) => Result;
 
 	/**
 	 * Visit a parse tree produced by `ApexParser.soqlFunction`.

@@ -156,6 +156,8 @@ CUBE            : 'cube';
 FORMAT          : 'format';
 TRACKING        : 'tracking';
 VIEWSTAT        : 'viewstat';
+CUSTOM          : 'custom';
+STANDARD        : 'standard';
 
 // SOQL Date functions
 CALENDAR_MONTH      : 'calendar_month';

@@ -25,6 +25,7 @@ If you change the Parser or Lexer grammar files you will need to update the pars
     npm run antlr4ts 
 
 ### History
+    2.9.0 - Add SOQL Fields function
     2.8.0 - Apex cast priority fix, SOSL & SOQL query format fixes, Added SOQL Date functions 
     2.7.1 - Bugfix for 'Network' identifier
     2.7.0 - Support inline SOSL queries

@@ -96,7 +96,7 @@ test('Trigger Unit', () => {
 })
 
 test('SOQL Query', () => {
-    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "Select Id from Account"))
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.soql", "Select Id from Account"))
     const tokens  = new CommonTokenStream(lexer);
 
     const parser = new ApexParser(tokens)
@@ -105,8 +105,19 @@ test('SOQL Query', () => {
     expect(context).toBeTruthy()
 })
 
+test('SOQL Query Using Field function', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.soql", "Select Fields(All) from Account"))
+    const tokens  = new CommonTokenStream(lexer);
+
+    const parser = new ApexParser(tokens)
+    const context = parser.query()
+
+    expect(context).toBeTruthy()
+})
+
+
 test('SOSL Query', () => {
-    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.trigger", "[Find {something} RETURNING Account]"))
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.sosl", "[Find {something} RETURNING Account]"))
     const tokens  = new CommonTokenStream(lexer);
 
     const parser = new ApexParser(tokens)

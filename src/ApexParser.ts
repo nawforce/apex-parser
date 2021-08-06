@@ -1,4 +1,4 @@
-// Generated from ApexParser.g4 by ANTLR 4.7.3-SNAPSHOT
+// Generated from ApexParser.g4 by ANTLR 4.9.0-SNAPSHOT
 
 
 import { ATN } from "antlr4ts/atn/ATN";
@@ -533,6 +533,10 @@ export class ApexParser extends Parser {
 
 	// @Override
 	public get serializedATN(): string { return ApexParser._serializedATN; }
+
+	protected createFailedPredicateException(predicate?: string, message?: string): FailedPredicateException {
+		return new FailedPredicateException(this, predicate, message);
+	}
 
 	constructor(input: TokenStream) {
 		super(input);
@@ -4653,7 +4657,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 887;
 						if (!(this.precpred(this._ctx, 13))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 13)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 13)");
 						}
 						this.state = 888;
 						_la = this._input.LA(1);
@@ -4678,7 +4682,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 890;
 						if (!(this.precpred(this._ctx, 12))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 12)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 12)");
 						}
 						this.state = 891;
 						_la = this._input.LA(1);
@@ -4703,7 +4707,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 893;
 						if (!(this.precpred(this._ctx, 11))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 11)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 11)");
 						}
 						this.state = 901;
 						this._errHandler.sync(this);
@@ -4748,7 +4752,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 904;
 						if (!(this.precpred(this._ctx, 10))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 10)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 10)");
 						}
 						this.state = 905;
 						_la = this._input.LA(1);
@@ -4783,7 +4787,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 910;
 						if (!(this.precpred(this._ctx, 8))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 8)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 8)");
 						}
 						this.state = 911;
 						_la = this._input.LA(1);
@@ -4808,7 +4812,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 913;
 						if (!(this.precpred(this._ctx, 7))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 7)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 7)");
 						}
 						this.state = 914;
 						this.match(ApexParser.BITAND);
@@ -4823,7 +4827,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 916;
 						if (!(this.precpred(this._ctx, 6))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 6)");
 						}
 						this.state = 917;
 						this.match(ApexParser.CARET);
@@ -4838,7 +4842,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 919;
 						if (!(this.precpred(this._ctx, 5))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 5)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 5)");
 						}
 						this.state = 920;
 						this.match(ApexParser.BITOR);
@@ -4853,7 +4857,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 922;
 						if (!(this.precpred(this._ctx, 4))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 4)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 4)");
 						}
 						this.state = 923;
 						this.match(ApexParser.AND);
@@ -4868,7 +4872,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 925;
 						if (!(this.precpred(this._ctx, 3))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 3)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 3)");
 						}
 						this.state = 926;
 						this.match(ApexParser.OR);
@@ -4883,7 +4887,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 928;
 						if (!(this.precpred(this._ctx, 2))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 2)");
 						}
 						this.state = 929;
 						this.match(ApexParser.QUESTION);
@@ -4902,7 +4906,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 934;
 						if (!(this.precpred(this._ctx, 1))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 1)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 1)");
 						}
 						this.state = 935;
 						_la = this._input.LA(1);
@@ -4927,7 +4931,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 937;
 						if (!(this.precpred(this._ctx, 22))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 22)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 22)");
 						}
 						this.state = 938;
 						_la = this._input.LA(1);
@@ -4967,7 +4971,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 943;
 						if (!(this.precpred(this._ctx, 21))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 21)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 21)");
 						}
 						this.state = 944;
 						this.match(ApexParser.LBRACK);
@@ -4984,7 +4988,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 948;
 						if (!(this.precpred(this._ctx, 16))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 16)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 16)");
 						}
 						this.state = 949;
 						_la = this._input.LA(1);
@@ -5007,7 +5011,7 @@ export class ApexParser extends Parser {
 						this.pushNewRecursionContext(_localctx, _startState, ApexParser.RULE_expression);
 						this.state = 950;
 						if (!(this.precpred(this._ctx, 9))) {
-							throw new FailedPredicateException(this, "this.precpred(this._ctx, 9)");
+							throw this.createFailedPredicateException("this.precpred(this._ctx, 9)");
 						}
 						this.state = 951;
 						this.match(ApexParser.INSTANCEOF);

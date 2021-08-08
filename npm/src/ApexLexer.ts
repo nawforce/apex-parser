@@ -395,6 +395,9 @@ export class ApexLexer extends Lexer {
 	// tslint:enable:no-trailing-whitespace
 
 
+	    
+
+
 	constructor(input: CharStream) {
 		super(input);
 		this._interp = new LexerATNSimulator(ApexLexer._ATN, this);

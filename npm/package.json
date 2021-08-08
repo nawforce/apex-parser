@@ -1,16 +1,18 @@
 {
   "name": "apex-parser",
-  "version": "2.9.0",
+  "version": "2.9.1",
   "author": "Kevin Jones <nawforce@gmail.com> (https://github.com/nawforce)",
   "bugs": "https://github.com/nawforce/apex-parser/issues",
   "description": "Javascript parser for Salesforce Apex Language",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "scripts": {
-    "build": "tsc",
+    "build": "cp ../README.md . && tsc",
     "test": "jest --config jestconfig.json lib",
-    "antlr4ts": "cd ../antlr && antlr4ts -visitor -o ../npm/src ApexLexer.g4 ApexParser.g4",
-    "check": "node -e 'require(\"./lib/index.js\").check()'"
+    "antlr4ts": "rm -r antlr; mkdir antlr; npm run antlr-build && npm run antlr-patch ",
+    "antlr-build": "rm -r antlr; mkdir antlr; cp ../antlr/* antlr; cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4",
+    "antlr-patch": "sed -i '' -e 's/public void clearCache() {.*}//g' src/ApexParser.ts && sed -i '' -e 's/public void clearCache() {.*}//g' src/ApexLexer.ts",
+    "check": "node -e require(\"./lib/index.js\").check()'"
   },
   "files": [
     "lib/**/*"

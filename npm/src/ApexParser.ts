@@ -538,6 +538,9 @@ export class ApexParser extends Parser {
 		return new FailedPredicateException(this, predicate, message);
 	}
 
+
+	    
+
 	constructor(input: TokenStream) {
 		super(input);
 		this._interp = new ParserATNSimulator(ApexParser._ATN, this);

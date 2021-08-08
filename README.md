@@ -1,15 +1,16 @@
 apex-parser
 ===========
 
-Parser for Salesforce Apex (including inline SOQL/SOQL). This is based on an ANTLR4 grammar (see antlr/ApexParser.g4) using antlr4ts to generate a parser/lexer in Typescript. 
+Parser for Salesforce Apex (including Triggers & inline SOQL/SOQL). This is based on an ANTLR4 grammar, see antlr/ApexParser.g4. 
 
-This module just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by antlr4ts. See [pkgforce](https://github.com/nawforce/pkgforce) for example code on how this may be used. 
+There are two builds of the parser a available, a NPM module for use with Node and a Maven package for use on JVMs.
 
-As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is
-automtaically parsed, but you may also parse SOQL/SOQL directly. You can find some minimal examples in the src/\__test__ directory. Supports parsing of class & trigger files but not yet anonymous code snippets.
+This builds just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by ANTLR4. 
+
+As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you may also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
 
 ### Example
-To parse a class file:
+To parse a class file (NPM version):
 
     let lexer = new ApexLexer(new CaseInsensitiveInputStream("public class Hello {}"))
     let tokens  = new CommonTokenStream(lexer);
@@ -20,11 +21,13 @@ To parse a class file:
 The 'context' is a CompilationUnitContext object which is the root of the parsed representation of the class. You can access the parse tree via functions on it.
 
 ### Change grammar
-If you change the Parser or Lexer grammar files you will need to update the parser with
+If you change the Parser or Lexer grammar files you will need to update the pre-generated parser with
 
     npm run antlr4ts 
 
+
 ### History
+    2.9.1 - JVM build and npm dependency updates
     2.9.0 - Add SOQL Fields function
     2.8.0 - Apex cast priority fix, SOSL & SOQL query format fixes, Added SOQL Date functions 
     2.7.1 - Bugfix for 'Network' identifier

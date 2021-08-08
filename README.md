@@ -1,11 +1,11 @@
 apex-parser
 ===========
 
-Parser for Salesforce Apex (including Triggers & inline SOQL/SOQL). This is based on an ANTLR4 grammar, see antlr/ApexParser.g4. 
+Parser for Salesforce Apex (including Triggers & inline SOQL/SOQL). This is based on an [ANTLR4](https://www.antlr.org/) grammar, see antlr/ApexParser.g4. 
 
-There are two builds of the parser a available, a NPM module for use with Node and a Maven package for use on JVMs.
+There are two builds of the parser available, a NPM module for use with Node and a Maven package for use on JVMs.
 
-This builds just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by ANTLR4. 
+These builds just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by ANTLR4. 
 
 As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you may also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
 
@@ -19,6 +19,20 @@ To parse a class file (NPM version):
     let context = parser.compilationUnit()
 
 The 'context' is a CompilationUnitContext object which is the root of the parsed representation of the class. You can access the parse tree via functions on it.
+
+### Packages
+
+Maven
+
+    <dependency>
+        <groupId>com.github.nawforce</groupId>
+        <artifactId>apex-parser</artifactId>
+        <version>2.9.1</version>
+    </dependency>
+
+NPM
+
+    "apex-parser": "^2.9.1"
 
 ### Building
 To build both distributions:

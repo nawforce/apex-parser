@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest --config jestconfig.json lib",
-    "antlr4ts": "cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4",
+    "antlr4ts": "cd ../antlr && antlr4ts -visitor -o ../npm/src ApexLexer.g4 ApexParser.g4",
     "check": "node -e 'require(\"./lib/index.js\").check()'"
   },
   "files": [

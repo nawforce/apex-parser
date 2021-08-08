@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: 
+  antlr4-runtime-4.8-1.jar

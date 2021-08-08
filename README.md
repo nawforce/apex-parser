@@ -5,9 +5,9 @@ Parser for Salesforce Apex (including Triggers & inline SOQL/SOQL). This is base
 
 There are two builds of the parser available, a NPM module for use with Node and a Maven package for use on JVMs.
 
-These builds just contains the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by ANTLR4. 
+These builds just contain the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by ANTLR4. 
 
-As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you may also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
+As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you can also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
 
 ### Example
 To parse a class file (NPM version):

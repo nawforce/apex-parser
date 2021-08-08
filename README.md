@@ -20,11 +20,10 @@ To parse a class file (NPM version):
 
 The 'context' is a CompilationUnitContext object which is the root of the parsed representation of the class. You can access the parse tree via functions on it.
 
-### Change grammar
-If you change the Parser or Lexer grammar files you will need to update the pre-generated parser with
+### Building
+To build both distributions:
 
-    npm run antlr4ts 
-
+    npm run build
 
 ### History
     2.9.1 - JVM build and npm dependency updates

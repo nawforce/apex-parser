@@ -7,7 +7,7 @@
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "scripts": {
-    "build": "cp ../README.md . && tsc",
+    "build": "npm run antlr4ts && cp ../README.md . && tsc",
     "test": "jest --config jestconfig.json lib",
     "antlr4ts": "rm -r antlr; mkdir antlr; npm run antlr-build && npm run antlr-patch ",
     "antlr-build": "rm -r antlr; mkdir antlr; cp ../antlr/* antlr; cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4",

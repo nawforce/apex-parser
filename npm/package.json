@@ -9,8 +9,8 @@
   "scripts": {
     "build": "npm run antlr4ts && cp ../README.md . && tsc",
     "test": "jest --config jestconfig.json lib",
-    "antlr4ts": "rm -r antlr; mkdir antlr; npm run antlr-build && npm run antlr-patch ",
-    "antlr-build": "rm -r antlr; mkdir antlr; cp ../antlr/* antlr; cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4",
+    "antlr4ts": "npm run antlr-build && npm run antlr-patch ",
+    "antlr-build": "(cd antlr; antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4)",
     "antlr-patch": "sed -i '' -e 's/public void clearCache() {.*}//g' src/ApexParser.ts && sed -i '' -e 's/public void clearCache() {.*}//g' src/ApexLexer.ts",
     "check": "node -e require(\"./lib/index.js\").check()'"
   },

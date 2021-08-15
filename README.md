@@ -32,7 +32,7 @@ Maven
 
 NPM
 
-    "apex-parser": "^2.9.1"
+    "apex-parser": "^2.9.2"
 
 ### Building
 To build both distributions:
@@ -40,6 +40,7 @@ To build both distributions:
     npm run build
 
 ### History
+    2.9.2 - Generate .d.ts files 
     2.9.1 - JVM build and npm dependency updates
     2.9.0 - Add SOQL Fields function
     2.8.0 - Apex cast priority fix, SOSL & SOQL query format fixes, Added SOQL Date functions 

@@ -66,11 +66,14 @@ typeDeclaration
     ;
 
 classDeclaration
-    : CLASS id
+    : CLASS id typeParameters?
       (EXTENDS typeRef)?
       (IMPLEMENTS typeList)?
       classBody
     ;
+
+typeParameters
+    : LT id (COMMA id)* GT;
 
 enumDeclaration
     : ENUM id

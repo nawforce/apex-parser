@@ -4,7 +4,7 @@
 
   <groupId>com.github.nawforce</groupId>
   <artifactId>apex-parser</artifactId>
-  <version>2.9.2</version>
+  <version>2.10.0</version>
   <packaging>jar</packaging>
 
   <name>apex-parser</name>
@@ -90,6 +90,7 @@
     <testSourceDirectory>src/test/java</testSourceDirectory>
 
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -184,7 +185,7 @@
       <plugin>
         <groupId>org.antlr</groupId>
         <artifactId>antlr4-maven-plugin</artifactId>
-        <version>4.5.3</version>
+        <version>4.8-1</version>
         <executions>
           <execution>
             <id>antlr</id>
@@ -193,6 +194,9 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <visitor>true</visitor>
+        </configuration>
       </plugin>
 
       <plugin>

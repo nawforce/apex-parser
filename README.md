@@ -9,6 +9,10 @@ These builds just contain the Parser & Lexer and provides no further support for
 
 As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you can also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
 
+### WARNING: Non-standard class type-arguments
+
+In 2.10.0 I have allowed classes to have type arguments. This is not supported on any recent version of Apex, if you parse a class and it has type arguments you should error. 
+
 ### Example
 To parse a class file (NPM version):
 
@@ -40,6 +44,7 @@ To build both distributions:
     npm run build
 
 ### History
+    2.10.0 - Allow type arguments on Classes (non-standard!)
     2.9.2 - Generate .d.ts files 
     2.9.1 - JVM build and npm dependency updates
     2.9.0 - Add SOQL Fields function

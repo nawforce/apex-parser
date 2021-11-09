@@ -1,5 +1,4 @@
 import { ApexLexer } from "../ApexLexer";
-import { ApexParserListener } from "../ApexParserListener";
 import { ApexParser, MethodDeclarationContext } from "../ApexParser";
 import { CaseInsensitiveInputStream } from "../CaseInsensitiveInputStream"
 import { CommonTokenStream } from 'antlr4ts';

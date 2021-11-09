@@ -42,6 +42,8 @@ export * from './CaseInsensitiveInputStream'
 export * from './ThrowingErrorListener'
 export * from './ApexParserListener'
 export * from './ApexParserVisitor'
+export {CommonTokenStream} from 'antlr4ts'
+export {ParseTreeWalker} from 'antlr4ts/tree/ParseTreeWalker'
 
 export function check(): void {
     const path = resolve(process.argv[1] || process.cwd())

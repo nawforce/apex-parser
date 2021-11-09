@@ -1,6 +1,6 @@
 import { ApexLexer } from "../ApexLexer";
 import { ApexParserListener } from "../ApexParserListener";
-import { ApexParser, MethodDeclarationContext } from "../ApexParser";
+import { ApexParser } from "../ApexParser";
 import { CaseInsensitiveInputStream } from "../CaseInsensitiveInputStream"
 import { CommonTokenStream } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
@@ -9,17 +9,17 @@ import { ThrowingErrorListener } from "../ThrowingErrorListener";
 class TestListener implements ApexParserListener {
     public methodCount = 0
 
-    enterMethodDeclaration(ctx: MethodDeclarationContext): void {
+    enterMethodDeclaration(/*ctx: MethodDeclarationContext*/): void {
         this.methodCount += 1;
     }
 }
 
 test('Listener Generates Events', () => {
 
-    let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello { public void func(){} }"))
-    let tokens = new CommonTokenStream(lexer);
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello { public void func(){} }"))
+    const tokens = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
+    const parser = new ApexParser(tokens)
 
     parser.removeErrorListeners()
     parser.addErrorListener(new ThrowingErrorListener());

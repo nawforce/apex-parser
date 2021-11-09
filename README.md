@@ -9,10 +9,6 @@ These builds just contain the Parser & Lexer and provides no further support for
 
 As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you can also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
 
-### WARNING: Non-standard class type-arguments
-
-In 2.10.0 I have allowed classes to have type arguments. This is not supported on any recent version of Apex, if you parse a class and it has type arguments you should error. 
-
 ### Example
 To parse a class file (NPM version):
 
@@ -24,6 +20,11 @@ To parse a class file (NPM version):
 
 The 'context' is a CompilationUnitContext object which is the root of the parsed representation of the class. You can access the parse tree via functions on it.
 
+### antlr4ts versions
+
+The npm module uses antlr4ts 0.5.0-alpha.4, this was updated from 0.5.0-alpha.3 in the 2.9.1 version. You should make
+sure that if you are using a matching verions of this dependency if you use directly. 
+
 ### Packages
 
 Maven
@@ -31,12 +32,12 @@ Maven
     <dependency>
         <groupId>com.github.nawforce</groupId>
         <artifactId>apex-parser</artifactId>
-        <version>2.9.1</version>
+        <version>2.11.0</version>
     </dependency>
 
 NPM
 
-    "apex-parser": "^2.9.2"
+    "apex-parser": "^2.11.0"
 
 ### Building
 To build both distributions:
@@ -44,6 +45,7 @@ To build both distributions:
     npm run build
 
 ### History
+    2.11.0 - Fix for SOQL UPDATE VIEWSTAT/TRACKING & removal of class type arguments
     2.10.0 - Allow type arguments on Classes (non-standard!)
     2.9.2 - Generate .d.ts files 
     2.9.1 - JVM build and npm dependency updates

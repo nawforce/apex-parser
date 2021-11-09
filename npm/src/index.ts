@@ -40,6 +40,8 @@ export * from './ApexLexer'
 export * from './ApexParser'
 export * from './CaseInsensitiveInputStream'
 export * from './ThrowingErrorListener'
+export * from './ApexParserListener'
+export * from './ApexParserVisitor'
 
 export function check(): void {
     const path = resolve(process.argv[1] || process.cwd())

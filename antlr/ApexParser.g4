@@ -66,14 +66,11 @@ typeDeclaration
     ;
 
 classDeclaration
-    : CLASS id typeParameters?
+    : CLASS id
       (EXTENDS typeRef)?
       (IMPLEMENTS typeList)?
       classBody
     ;
-
-typeParameters
-    : LT id (COMMA id)* GT;
 
 enumDeclaration
     : ENUM id
@@ -543,7 +540,9 @@ query
         limitClause?
         offsetClause?
         allRowsClause?
-        forClauses;
+        forClauses
+        (UPDATE updateList)?
+        ;
 
 subQuery
     : SELECT subFieldList
@@ -551,7 +550,9 @@ subQuery
         whereClause?
         orderByClause?
         limitClause?
-        forClauses;
+        forClauses
+        (UPDATE updateList)?
+        ;
 
 selectList
     : selectEntry (COMMA selectEntry)*;

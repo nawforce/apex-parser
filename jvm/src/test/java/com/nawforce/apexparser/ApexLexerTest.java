@@ -1,6 +1,6 @@
 package com.nawforce.apexparser;
 
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ public class ApexLexerTest {
 
     @Test
     void testLexerGeneratesTokens() {
-        ApexLexer lexer = new ApexLexer(new ANTLRInputStream("public class Hello {}"));
+        ApexLexer lexer = new ApexLexer(CharStreams.fromString("public class Hello {}"));
         CommonTokenStream tokens  = new CommonTokenStream(lexer);
         assertEquals(6, tokens.getNumberOfOnChannelTokens());
     }

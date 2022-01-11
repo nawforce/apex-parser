@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.StringReader;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class ApexListenerTest {
 
     static class TestListener extends ApexParserBaseListener {
@@ -30,7 +32,7 @@ public class ApexListenerTest {
         TestListener listener = new TestListener();
         ParseTreeWalker.DEFAULT.walk(listener, context);
 
-        assert(1 == listener.methodCount);
+        assertEquals(listener.methodCount.intValue(), 1);
     }
 
 }

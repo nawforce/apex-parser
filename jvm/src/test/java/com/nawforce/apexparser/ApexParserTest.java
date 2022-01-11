@@ -8,6 +8,7 @@ import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ApexParserTest {
 
@@ -26,7 +27,7 @@ public class ApexParserTest {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ApexParser parser = new ApexParser(tokens);
         ApexParser.ExpressionContext context = parser.expression();
-        assert (context instanceof ApexParser.Arth1ExpressionContext);
+        assertTrue(context instanceof ApexParser.Arth1ExpressionContext);
         assertEquals(2, ((ApexParser.Arth1ExpressionContext) context).expression().size());
     }
 

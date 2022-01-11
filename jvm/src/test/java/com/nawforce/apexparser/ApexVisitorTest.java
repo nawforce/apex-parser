@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.StringReader;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class ApexVisitorTest {
 
     static class TestVisitor extends ApexParserBaseVisitor<Integer> {
@@ -34,7 +36,7 @@ public class ApexVisitorTest {
         TestVisitor visitor = new TestVisitor();
         visitor.visit(context);
 
-        assert (1 == visitor.methodCount);
+        assertEquals(visitor.methodCount.intValue(), 1);
     }
 
 }

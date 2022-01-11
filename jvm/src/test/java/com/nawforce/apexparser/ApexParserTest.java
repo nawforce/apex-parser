@@ -40,6 +40,15 @@ public class ApexParserTest {
     }
 
     @Test
+    void testCaseInsensitivity() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("Public CLASS Hello {}")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        ApexParser.CompilationUnitContext context = parser.compilationUnit();
+        assertNotEquals(null, context);
+    }
+
+    @Test
     void testClassWithError() throws IOException {
         ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("public class Hello {")));
         CommonTokenStream tokens = new CommonTokenStream(lexer);

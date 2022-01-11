@@ -28,7 +28,9 @@
 package com.nawforce.apexparser;
 
 import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.IntStream;
+import org.antlr.v4.runtime.misc.Interval;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,33 +39,73 @@ import java.io.Reader;
 /**
  * ANTLR4 stream handler that allows use of case insensitive handling.
  */
-@SuppressWarnings({"unused", "deprecation"})
-public class CaseInsensitiveInputStream extends org.antlr.v4.runtime.ANTLRInputStream {
-    public CaseInsensitiveInputStream(InputStream is) throws IOException {
-        super(is);
+@SuppressWarnings({"unused"})
+public class CaseInsensitiveInputStream implements CharStream {
+
+    private CharStream src;
+
+    public CaseInsensitiveInputStream(CharStream src) {
+        this.src = src;
     }
 
+    @Deprecated
+    public CaseInsensitiveInputStream(InputStream r) throws IOException {
+        this.src = CharStreams.fromStream(r);
+    }
+
+    @Deprecated
     public CaseInsensitiveInputStream(Reader r) throws IOException {
-        super(r, 1024, 1024);
+        this.src = CharStreams.fromReader(r);
     }
 
+    @Deprecated
     public CaseInsensitiveInputStream(Reader r, Integer initialSize, Integer readChunkSize) throws IOException {
-        super(r, initialSize, readChunkSize);
+        this.src = CharStreams.fromReader(r);
+    }
+
+    @Override
+    public String getText(Interval interval) {
+        return src.getText(interval);
+    }
+
+    @Override
+    public void consume() {
+        src.consume();
+    }
+
+    @Override
+    public String getSourceName() {
+        return src.getSourceName();
+    }
+
+    @Override
+    public int index() {
+        return src.index();
     }
 
     @Override
     public int LA(int i) {
-        if (i == 0) {
-            return 0;
-        }
-        if (i < 0) {
-            i++; // e.g., translate LA(-1) to use offset 0
-        }
+        return Character.toLowerCase(src.LA(i));
+    }
 
-        if ((p + i - 1) >= n) {
-            return CharStream.EOF;
-        }
-        return Character.toLowerCase(data[p + i - 1]);
+    @Override
+    public int mark() {
+        return src.mark();
+    }
+
+    @Override
+    public void release(int marker) {
+        src.release(marker);
+    }
+
+    @Override
+    public void seek(int index) {
+        src.seek(index);
+    }
+
+    @Override
+    public int size() {
+        return src.size();
     }
 
     public void dump() {

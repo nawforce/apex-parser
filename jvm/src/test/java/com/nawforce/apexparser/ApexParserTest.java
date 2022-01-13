@@ -125,7 +125,7 @@ public class ApexParserTest {
     @Test
     void testCurrencyLiteral() throws IOException {
         ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-             "SELECT Id FROM Account WHERE Amount > USD100")));
+             "SELECT Id FROM Account WHERE Amount > USD100.01 AND Amount < USD200")));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ApexParser parser = new ApexParser(tokens);
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();

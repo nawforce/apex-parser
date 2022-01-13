@@ -657,7 +657,8 @@ value
     | DateLiteral
     | DateTimeLiteral
     | dateFormula
-    | CurrencyLiteral
+    | IntegralCurrencyLiteral
+    | FractionalCurrencyLiteral
     | LPAREN subQuery RPAREN
     | valueList
     | boundExpression
@@ -825,7 +826,6 @@ soslId
 // can significantly impact the parser performance by creating ambiguities.
 id
     : Identifier
-    | CurrencyLiteral
     | AFTER
     | BEFORE
     | GET
@@ -839,6 +839,8 @@ id
     | WHEN
     | WITH
     | WITHOUT
+    // SOQL Values
+    | IntegralCurrencyLiteral
     // SOQL Specific Keywords
     | SELECT
     | COUNT
@@ -1021,6 +1023,8 @@ anyId
     | WHILE
     | WITH
     | WITHOUT
+    // SOQL Values
+    | IntegralCurrencyLiteral
     // SOQL Specific Keywords
     | SELECT
     | COUNT

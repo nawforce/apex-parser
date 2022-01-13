@@ -657,7 +657,7 @@ value
     | DateLiteral
     | DateTimeLiteral
     | dateFormula
-    | currencyValue
+    | CurrencyLiteral
     | LPAREN subQuery RPAREN
     | valueList
     | boundExpression
@@ -665,8 +665,6 @@ value
 
 valueList
     : LPAREN value (COMMA value)* RPAREN;
-
-currencyValue: soqlId signedInteger;
 
 withClause
     : WITH DATA CATEGORY filteringExpression
@@ -827,6 +825,7 @@ soslId
 // can significantly impact the parser performance by creating ambiguities.
 id
     : Identifier
+    | CurrencyLiteral
     | AFTER
     | BEFORE
     | GET

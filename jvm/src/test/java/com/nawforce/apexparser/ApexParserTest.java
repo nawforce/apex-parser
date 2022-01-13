@@ -123,6 +123,18 @@ public class ApexParserTest {
     }
 
     @Test
+    void testCurrencyLiteral() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+             "SELECT Id FROM Account WHERE Amount > USD100")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        ApexParser.QueryContext context = parser.query();
+        assertEquals(errorCounter.getNumErrors(), 0);
+    }
+
+    @Test
     void testDateTimeLiteral() throws IOException {
         ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
              "SELECT Name, (SELECT Id FROM Account WHERE createdDate > 2020-01-01T12:00:00Z) FROM Opportunity")));

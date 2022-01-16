@@ -1,6 +1,9 @@
 package com.nawforce.apexparser;
 
+import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Recognizer;
+import org.antlr.v4.runtime.RecognitionException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -11,6 +14,25 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ApexParserTest {
+
+    public static class SyntaxErrorCounter extends BaseErrorListener {
+        private int numErrors = 0;
+
+        @Override
+        public void syntaxError(
+                Recognizer<?, ?> recognizer,
+                Object offendingSymbol,
+                int line,
+                int charPositionInLine,
+                String msg,
+                RecognitionException e) {
+            this.numErrors += 1;
+        }
+
+        public int getNumErrors() {
+            return this.numErrors;
+        }
+    }
 
     @Test
     void testBooleanLiteral() throws IOException {
@@ -98,6 +120,30 @@ public class ApexParserTest {
         ApexParser parser = new ApexParser(tokens);
         ApexParser.SoslLiteralContext context = parser.soslLiteral();
         assertNotEquals(null, context);
+    }
+
+    @Test
+    void testCurrencyLiteral() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+             "SELECT Id FROM Account WHERE Amount > USD100.01 AND Amount < USD200")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        ApexParser.QueryContext context = parser.query();
+        assertEquals(errorCounter.getNumErrors(), 0);
+    }
+
+    @Test
+    void testDateTimeLiteral() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+             "SELECT Name, (SELECT Id FROM Account WHERE createdDate > 2020-01-01T12:00:00Z) FROM Opportunity")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        ApexParser.QueryContext context = parser.query();
+        assertEquals(errorCounter.getNumErrors(), 0);
     }
 }
 

@@ -657,7 +657,8 @@ value
     | DateLiteral
     | DateTimeLiteral
     | dateFormula
-    | currencyValue
+    | IntegralCurrencyLiteral
+    | FractionalCurrencyLiteral
     | LPAREN subQuery RPAREN
     | valueList
     | boundExpression
@@ -665,8 +666,6 @@ value
 
 valueList
     : LPAREN value (COMMA value)* RPAREN;
-
-currencyValue: soqlId signedInteger;
 
 withClause
     : WITH DATA CATEGORY filteringExpression
@@ -840,6 +839,8 @@ id
     | WHEN
     | WITH
     | WITHOUT
+    // SOQL Values
+    | IntegralCurrencyLiteral
     // SOQL Specific Keywords
     | SELECT
     | COUNT
@@ -1022,6 +1023,8 @@ anyId
     | WHILE
     | WITH
     | WITHOUT
+    // SOQL Values
+    | IntegralCurrencyLiteral
     // SOQL Specific Keywords
     | SELECT
     | COUNT

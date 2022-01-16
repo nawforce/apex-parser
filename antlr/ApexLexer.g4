@@ -220,7 +220,12 @@ LAST_N_FISCAL_YEARS_N     : 'last_n_fiscal_years';
 
 // SOQL Date literal
 DateLiteral: Digit Digit Digit Digit '-' Digit Digit '-' Digit Digit;
-DateTimeLiteral: DateLiteral 'T' Digit Digit ':' Digit Digit ':' Digit Digit ('Z' | (('+' | '-') Digit+ ( ':' Digit+)? ));
+DateTimeLiteral: DateLiteral 't' Digit Digit ':' Digit Digit ':' Digit Digit ('z' | (('+' | '-') Digit+ ( ':' Digit+)? ));
+
+// SOQL Currency literal
+// (NOTE: this is also a valid Identifier)
+IntegralCurrencyLiteral: [a-z] [a-z] [a-z] Digit+;
+FractionalCurrencyLiteral: [a-z] [a-z] [a-z] Digit+ '.' Digit*;
 
 // SOSL Keywords
 FIND                      : 'find';

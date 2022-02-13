@@ -130,8 +130,8 @@ public class ApexParserTest {
         ApexParser parser = new ApexParser(tokens);
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
         parser.addErrorListener(errorCounter);
-        ApexParser.QueryContext context = parser.query();
-        assertEquals(errorCounter.getNumErrors(), 0);
+        parser.query();
+        assertEquals(0, errorCounter.getNumErrors());
     }
 
     @Test
@@ -142,7 +142,7 @@ public class ApexParserTest {
         ApexParser parser = new ApexParser(tokens);
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
         parser.addErrorListener(errorCounter);
-        ApexParser.StatementContext context = parser.statement();
+        parser.statement();
         assertEquals(0, errorCounter.getNumErrors());
     }
 
@@ -154,8 +154,8 @@ public class ApexParserTest {
         ApexParser parser = new ApexParser(tokens);
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
         parser.addErrorListener(errorCounter);
-        ApexParser.QueryContext context = parser.query();
-        assertEquals(errorCounter.getNumErrors(), 0);
+        parser.query();
+        assertEquals(0, errorCounter.getNumErrors());
     }
 }
 

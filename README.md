@@ -36,12 +36,12 @@ Maven
     <dependency>
         <groupId>com.github.nawforce</groupId>
         <artifactId>apex-parser</artifactId>
-        <version>2.12.0</version>
+        <version>2.12.1</version>
     </dependency>
 
 NPM
 
-    "apex-parser": "^2.12.0"
+    "apex-parser": "^2.12.1"
 
 ### Building
 To build both distributions:
@@ -49,6 +49,7 @@ To build both distributions:
     npm run build
 
 ### History
+    2.12.1 - Fix for Currency literals consuming '.' when matching identifiers
     2.12.0 - Replace deprecated ANTLRINputStream, DateTime & Currency literals fixes (contrib Aaron Hurst) 
     2.11.0 - Fix for SOQL UPDATE VIEWSTAT/TRACKING & removal of class type arguments
     2.10.0 - Allow type arguments on Classes (non-standard!)

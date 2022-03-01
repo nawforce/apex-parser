@@ -225,7 +225,8 @@ DateTimeLiteral: DateLiteral 't' Digit Digit ':' Digit Digit ':' Digit Digit ('z
 // SOQL Currency literal
 // (NOTE: this is also a valid Identifier)
 IntegralCurrencyLiteral: [a-z] [a-z] [a-z] Digit+;
-FractionalCurrencyLiteral: [a-z] [a-z] [a-z] Digit+ '.' Digit*;
+// We require digits after the dot to avoid consuming it when may be identifier
+FractionalCurrencyLiteral: [a-z] [a-z] [a-z] Digit+ '.' Digit+;
 
 // SOSL Keywords
 FIND                      : 'find';

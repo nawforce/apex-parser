@@ -657,8 +657,7 @@ value
     | DateLiteral
     | DateTimeLiteral
     | dateFormula
-    | IntegralCurrencyLiteral
-    | FractionalCurrencyLiteral
+    | IntegralCurrencyLiteral (DOT IntegerLiteral?)?
     | LPAREN subQuery RPAREN
     | valueList
     | boundExpression

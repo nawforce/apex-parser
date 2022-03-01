@@ -32,7 +32,7 @@ public class ApexListenerTest {
         TestListener listener = new TestListener();
         ParseTreeWalker.DEFAULT.walk(listener, context);
 
-        assertEquals(listener.methodCount.intValue(), 1);
+        assertEquals(1, listener.methodCount.intValue());
     }
 
 }

@@ -36,7 +36,7 @@ public class ApexVisitorTest {
         TestVisitor visitor = new TestVisitor();
         visitor.visit(context);
 
-        assertEquals(visitor.methodCount.intValue(), 1);
+        assertEquals(1, visitor.methodCount.intValue());
     }
 
 }

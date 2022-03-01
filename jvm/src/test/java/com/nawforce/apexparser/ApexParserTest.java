@@ -130,8 +130,20 @@ public class ApexParserTest {
         ApexParser parser = new ApexParser(tokens);
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
         parser.addErrorListener(errorCounter);
-        ApexParser.QueryContext context = parser.query();
-        assertEquals(errorCounter.getNumErrors(), 0);
+        parser.query();
+        assertEquals(0, errorCounter.getNumErrors());
+    }
+
+    @Test
+    void testIdentifiersThatCouldBeCurrencyLiterals() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+             "USD100.name = 'name';")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.statement();
+        assertEquals(0, errorCounter.getNumErrors());
     }
 
     @Test
@@ -142,8 +154,8 @@ public class ApexParserTest {
         ApexParser parser = new ApexParser(tokens);
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
         parser.addErrorListener(errorCounter);
-        ApexParser.QueryContext context = parser.query();
-        assertEquals(errorCounter.getNumErrors(), 0);
+        parser.query();
+        assertEquals(0, errorCounter.getNumErrors());
     }
 }
 

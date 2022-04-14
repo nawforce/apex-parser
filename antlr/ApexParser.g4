@@ -650,9 +650,7 @@ comparisonOperator
 value
     : NULL
     | BooleanLiteral
-    | IntegerLiteral
-    | LongLiteral
-    | NumberLiteral
+    | signedNumber
     | StringLiteral
     | DateLiteral
     | DateTimeLiteral
@@ -665,6 +663,10 @@ value
 
 valueList
     : LPAREN value (COMMA value)* RPAREN;
+
+// TODO: NumberLiteral has trailing [dD]?, SOQL does not support this but a fix would need wider changes
+signedNumber
+    : (ADD | SUB)? (IntegerLiteral | NumberLiteral);
 
 withClause
     : WITH DATA CATEGORY filteringExpression
@@ -811,7 +813,7 @@ updateList
 updateType
     : TRACKING | VIEWSTAT;
 
- networkList
+networkList
     : StringLiteral (COMMA networkList)?
     ;
 

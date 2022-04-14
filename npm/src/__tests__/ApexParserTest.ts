@@ -135,3 +135,44 @@ test('SOSL Query', () => {
 
     expect(context).toBeTruthy()
 })
+
+test('CurrencyLiteral', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.soql", "SELECT Id FROM Account WHERE Amount > USD100.01 AND Amount < USD200"))
+    const tokens  = new CommonTokenStream(lexer);
+
+    const parser = new ApexParser(tokens)
+    const context = parser.query()
+
+    expect(context).toBeTruthy()
+})
+
+test('IdentifiersThatCouldBeCurrencyLiterals', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.apex", "USD100.name = 'name';"))
+    const tokens  = new CommonTokenStream(lexer);
+
+    const parser = new ApexParser(tokens)
+    const context = parser.statement()
+
+    expect(context).toBeTruthy()
+})
+
+test('DateTimeLiteral', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.soql", "SELECT Name, (SELECT Id FROM Account WHERE createdDate > 2020-01-01T12:00:00Z) FROM Opportunity"))
+    const tokens  = new CommonTokenStream(lexer);
+
+    const parser = new ApexParser(tokens)
+    const context = parser.query()
+
+    expect(context).toBeTruthy()
+})
+
+test('testNegativeNumericLiteral', () => {
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.soql", "SELECT Name FROM Opportunity WHERE Value = -100.123"))
+    const tokens  = new CommonTokenStream(lexer);
+
+    const parser = new ApexParser(tokens)
+    const context = parser.query()
+
+    expect(context).toBeTruthy()
+})
+

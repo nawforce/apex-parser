@@ -157,6 +157,19 @@ public class ApexParserTest {
         parser.query();
         assertEquals(0, errorCounter.getNumErrors());
     }
+
+    @Test
+    void testNegativeNumericLiteral() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+                "SELECT Name FROM Opportunity WHERE Value = -100.123")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.query();
+        assertEquals(0, errorCounter.getNumErrors());
+    }
+
 }
 
 

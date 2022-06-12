@@ -20,10 +20,13 @@ To parse a class file (NPM version):
 
 The 'context' is a CompilationUnitContext object which is the root of the parsed representation of the class. You can access the parse tree via functions on it.
 
+### Unicode handling
+Prior to 2.12.0 the use of ANTLRInputStream for reading data in CaseInsensitiveStream would result character positions being given for UTF-16. The switch to CharStream input in 2.12.0 for JVM and 2.14.0 for node results in character positions reflecting Unicode code points. 
+
 ### antlr4ts versions
 
 The npm module uses antlr4ts 0.5.0-alpha.4, this was updated from 0.5.0-alpha.3 in the 2.9.1 version. You should make
-sure that if you are using a matching verions of this dependency if you use it directly. To avoid issues you can 
+sure that if you are using a matching versions of this dependency if you use it directly. To avoid issues you can 
 import 'CommonTokenStream' & 'ParseTreeWalker' from 'apex-parser' instead of from antlr4ts.
 
     import { CommonTokenStream} from "apex-parser";
@@ -36,12 +39,12 @@ Maven
     <dependency>
         <groupId>com.github.nawforce</groupId>
         <artifactId>apex-parser</artifactId>
-        <version>2.13.0</version>
+        <version>2.14.0</version>
     </dependency>
 
 NPM
 
-    "apex-parser": "^2.13.0"
+    "apex-parser": "^2.14.0"
 
 ### Building
 To build both distributions:
@@ -49,8 +52,9 @@ To build both distributions:
     npm run build
 
 ### History
+    2.14.0 - Change npm api to replace ANTLRInputStream with CharStream, for Unicode char positions  
     2.13.0 - Fixes for negative numerics & Currency literals in SOQL 
-    2.12.0 - Replace deprecated ANTLRINputStream, DateTime & Currency literals fixes (contrib Aaron Hurst) 
+    2.12.0 - Replace deprecated ANTLRInputStream, DateTime & Currency literals fixes (contrib Aaron Hurst) 
     2.11.0 - Fix for SOQL UPDATE VIEWSTAT/TRACKING & removal of class type arguments
     2.10.0 - Allow type arguments on Classes (non-standard!)
     2.9.2 - Generate .d.ts files 

@@ -31,7 +31,7 @@ import * as dir from 'node-dir'
 import { ApexLexer } from "./ApexLexer";
 import { ApexParser} from "./ApexParser";
 import { CaseInsensitiveInputStream } from "./CaseInsensitiveInputStream"
-import { CharStreams, CommonTokenStream } from 'antlr4ts';
+import { CommonTokenStream } from 'antlr4ts';
 import { ThrowingErrorListener } from "./ThrowingErrorListener";
 import { readFileSync } from 'fs';
 import { lstatSync } from 'fs';
@@ -55,7 +55,7 @@ export function check(): void {
         files.filter(name => name.endsWith(".cls")).forEach(file => {
             if (lstatSync(file).isFile()) {
                 const content = readFileSync(file);
-                const lexer = new ApexLexer(new CaseInsensitiveInputStream(CharStreams.fromString(content.toString())));
+                const lexer = new ApexLexer(new CaseInsensitiveInputStream(file, content.toString()));
                 const tokens  = new CommonTokenStream(lexer);
 
                 const parser = new ApexParser(tokens);

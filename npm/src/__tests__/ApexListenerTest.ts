@@ -2,7 +2,7 @@ import { ApexLexer } from "../ApexLexer";
 import { ApexParserListener } from "../ApexParserListener";
 import { ApexParser } from "../ApexParser";
 import { CaseInsensitiveInputStream } from "../CaseInsensitiveInputStream"
-import { CharStreams, CommonTokenStream } from 'antlr4ts';
+import { CommonTokenStream } from 'antlr4ts';
 import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker';
 import { ThrowingErrorListener } from "../ThrowingErrorListener";
 
@@ -16,7 +16,7 @@ class TestListener implements ApexParserListener {
 
 test('Listener Generates Events', () => {
 
-    const lexer = new ApexLexer(new CaseInsensitiveInputStream(CharStreams.fromString("public class Hello { public void func(){} }")));
+    const lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello { public void func(){} }"))
     const tokens = new CommonTokenStream(lexer);
 
     const parser = new ApexParser(tokens)

@@ -36,12 +36,12 @@ Maven
     <dependency>
         <groupId>com.github.nawforce</groupId>
         <artifactId>apex-parser</artifactId>
-        <version>2.13.0</version>
+        <version>2.15.0</version>
     </dependency>
 
 NPM
 
-    "apex-parser": "^2.13.0"
+    "apex-parser": "^2.15.0"
 
 ### Building
 To build both distributions:
@@ -49,6 +49,8 @@ To build both distributions:
     npm run build
 
 ### History
+    2.15.0 - Revert 2.14.0 changes.
+    2.14.0 - Change npm api to replace ANTLRInputStream with CharStream, for Unicode char positions  
     2.13.0 - Fixes for negative numerics & Currency literals in SOQL 
     2.12.0 - Replace deprecated ANTLRINputStream, DateTime & Currency literals fixes (contrib Aaron Hurst) 
     2.11.0 - Fix for SOQL UPDATE VIEWSTAT/TRACKING & removal of class type arguments

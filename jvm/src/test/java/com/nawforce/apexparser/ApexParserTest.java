@@ -170,6 +170,41 @@ public class ApexParserTest {
         assertEquals(0, errorCounter.getNumErrors());
     }
 
+    @Test
+    void testSemiAllowedAsWhileBody() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+                "while (x++ < 10 && !(y-- < 0));")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.statement();
+        assertEquals(0, errorCounter.getNumErrors());
+    }
+
+    @Test
+    void testSemiAllowedAsForBody() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+                "for(x=0; x<10; x++);")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.statement();
+        assertEquals(0, errorCounter.getNumErrors());
+    }
+
+    @Test
+    void testSemiDisallowedAsGeneralStatement() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+                "if (x == 3); else { ; }")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.statement();
+        assertEquals(1, errorCounter.getNumErrors());
+    }
 }
 
 

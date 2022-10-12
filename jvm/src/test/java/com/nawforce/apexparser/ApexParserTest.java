@@ -170,6 +170,22 @@ public class ApexParserTest {
         assertEquals(0, errorCounter.getNumErrors());
     }
 
+    @Test
+    void testWhenLiteralParens() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+                "switch on (x) { \n" +
+                "  when 1 { return 1; } \n" +
+                "  when ((2)) { return 2; } \n" +
+                "  when (3), (4) { return 3; } \n" +
+                "}")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.statement();
+        assertEquals(0, errorCounter.getNumErrors());
+    }
+
 }
 
 

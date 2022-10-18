@@ -169,6 +169,17 @@ public class ApexParserTest {
         parser.query();
         assertEquals(0, errorCounter.getNumErrors());
     }
+    
+    void testLastQuarterKeyword() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+             "SELECT Id FROM Account WHERE DueDate = LAST_QUARTER")));
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        ApexParser parser = new ApexParser(tokens);
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+        parser.query();
+        assertEquals(0, errorCounter.getNumErrors());
+    }
 
     @Test
     void testSemiAllowedAsWhileBody() throws IOException {
@@ -206,5 +217,3 @@ public class ApexParserTest {
         assertEquals(1, errorCounter.getNumErrors());
     }
 }
-
-

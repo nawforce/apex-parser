@@ -308,11 +308,11 @@ whenLiteral
     ;
 
 forStatement
-    : FOR LPAREN forControl RPAREN statement
+    : FOR LPAREN forControl RPAREN (statement | SEMI)
     ;
 
 whileStatement
-    : WHILE parExpression statement
+    : WHILE parExpression (statement | SEMI)
     ;
 
 doWhileStatement

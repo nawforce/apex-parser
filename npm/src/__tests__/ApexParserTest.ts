@@ -230,7 +230,3 @@ test('testWhenLiteralParens', () => {
     expect(context).toBeInstanceOf(StatementContext)
     expect(errorCounter.getNumErrors()).toEqual(0)
 })
-
-
-
-

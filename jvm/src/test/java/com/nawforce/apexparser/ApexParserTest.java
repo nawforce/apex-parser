@@ -1,17 +1,11 @@
 package com.nawforce.apexparser;
 
-import org.antlr.v4.runtime.BaseErrorListener;
-import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Recognizer;
-import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.io.StringReader;
+import javafx.util.Pair;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ApexParserTest {
 
@@ -34,176 +28,167 @@ public class ApexParserTest {
         }
     }
 
-    @Test
-    void testBooleanLiteral() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("true")));
+    Pair<ApexParser, SyntaxErrorCounter> createParser(String input) {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(CharStreams.fromString(input)));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ApexParser parser = new ApexParser(tokens);
-        ApexParser.LiteralContext context = parser.literal();
-        assertEquals("true", context.BooleanLiteral().getText());
+
+        parser.removeErrorListeners();
+        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
+        parser.addErrorListener(errorCounter);
+
+        return new Pair<>(parser, errorCounter);
     }
 
     @Test
-    void testExpression() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("a * 5")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.ExpressionContext context = parser.expression();
+    void testBooleanLiteral() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("true");
+
+        ApexParser.LiteralContext context = parserAndCounter.getKey().literal();
+        assertNotNull(context);
+        assertEquals("true", context.BooleanLiteral().getText());
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
+    }
+
+    @Test
+    void testExpression() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("a * 5");
+        ApexParser.ExpressionContext context = parserAndCounter.getKey().expression();
         assertTrue(context instanceof ApexParser.Arth1ExpressionContext);
         assertEquals(2, ((ApexParser.Arth1ExpressionContext) context).expression().size());
     }
 
     @Test
-    void testClass() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("public class Hello {}")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.CompilationUnitContext context = parser.compilationUnit();
-        assertNotEquals(null, context);
+    void testClass() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("public class Hello {}");
+        ApexParser.CompilationUnitContext context = parserAndCounter.getKey().compilationUnit();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testCaseInsensitivity() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("Public CLASS Hello {}")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.CompilationUnitContext context = parser.compilationUnit();
-        assertNotEquals(null, context);
+    void testCaseInsensitivity() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("Public CLASS Hello {}");
+        ApexParser.CompilationUnitContext context = parserAndCounter.getKey().compilationUnit();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testClassWithError() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("public class Hello {")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        parser.removeErrorListeners();
-        ApexParser.CompilationUnitContext context = parser.compilationUnit();
-        assertNotEquals(null, context);
+    void testClassWithError() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("public class Hello {");
+        ApexParser.CompilationUnitContext context = parserAndCounter.getKey().compilationUnit();
+        assertNotNull(context);
+        assertEquals(1, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testClassWithSOQL() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+    void testClassWithSOQL() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
                 "public class Hello {\n" +
                         "        public void func() {\n" +
                         "            List<Account> accounts = [Select Id from Accounts];\n" +
                         "        }\n" +
-                        "    }")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.CompilationUnitContext context = parser.compilationUnit();
-        assertNotEquals(null, context);
+                        "    }");
+        ApexParser.CompilationUnitContext context = parserAndCounter.getKey().compilationUnit();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testTrigger() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("trigger test on Account (before update, after update) {}")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.TriggerUnitContext context = parser.triggerUnit();
-        assertNotEquals(null, context);
+    void testTrigger() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("trigger test on Account (before update, after update) {}");
+        ApexParser.TriggerUnitContext context = parserAndCounter.getKey().triggerUnit();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testSOQL() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("Select Fields(All) from Account")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.QueryContext context = parser.query();
-        assertNotEquals(null, context);
+    void testSOQL() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("Select Fields(All) from Account");
+        ApexParser.QueryContext context = parserAndCounter.getKey().query();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testSOSL() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("[Find {something} RETURNING Account]")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        ApexParser.SoslLiteralContext context = parser.soslLiteral();
-        assertNotEquals(null, context);
+    void testSOSL() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find {something} RETURNING Account]");
+        ApexParser.SoslLiteralContext context = parserAndCounter.getKey().soslLiteral();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testCurrencyLiteral() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-             "SELECT Id FROM Account WHERE Amount > USD100.01 AND Amount < USD200")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.query();
-        assertEquals(0, errorCounter.getNumErrors());
+    void testCurrencyLiteral() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "SELECT Id FROM Account WHERE Amount > USD100.01 AND Amount < USD200");
+        ApexParser.QueryContext context = parserAndCounter.getKey().query();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testIdentifiersThatCouldBeCurrencyLiterals() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-             "USD100.name = 'name';")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.statement();
-        assertEquals(0, errorCounter.getNumErrors());
+    void testIdentifiersThatCouldBeCurrencyLiterals() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "USD100.name = 'name';");
+        ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testDateTimeLiteral() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-             "SELECT Name, (SELECT Id FROM Account WHERE createdDate > 2020-01-01T12:00:00Z) FROM Opportunity")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.query();
-        assertEquals(0, errorCounter.getNumErrors());
+    void testDateTimeLiteral() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "SELECT Name, (SELECT Id FROM Account WHERE createdDate > 2020-01-01T12:00:00Z) FROM Opportunity");
+        ApexParser.QueryContext context = parserAndCounter.getKey().query();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testNegativeNumericLiteral() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-                "SELECT Name FROM Opportunity WHERE Value = -100.123")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.query();
-        assertEquals(0, errorCounter.getNumErrors());
+    void testNegativeNumericLiteral() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "SELECT Name FROM Opportunity WHERE Value = -100.123");
+        ApexParser.QueryContext context = parserAndCounter.getKey().query();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testSemiAllowedAsWhileBody() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-                "while (x++ < 10 && !(y-- < 0));")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.statement();
-        assertEquals(0, errorCounter.getNumErrors());
+    void testLastQuarterKeyword() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "SELECT Id FROM Account WHERE DueDate = LAST_QUARTER");
+        ApexParser.QueryContext context = parserAndCounter.getKey().query();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testSemiAllowedAsForBody() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-                "for(x=0; x<10; x++);")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.statement();
-        assertEquals(0, errorCounter.getNumErrors());
+    void testSemiAllowedAsWhileBody() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "while (x++ < 10 && !(y-- < 0));");
+        ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
     @Test
-    void testSemiDisallowedAsGeneralStatement() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-                "if (x == 3); else { ; }")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.statement();
-        assertEquals(1, errorCounter.getNumErrors());
+    void testSemiAllowedAsForBody() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "for(x=0; x<10; x++);");
+        ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
+    }
+
+    @Test
+    void testSemiDisallowedAsGeneralStatement() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                "if (x == 3); else { ; }");
+        ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+        assertNotNull(context);
+        assertEquals(1, parserAndCounter.getValue().getNumErrors());
     }
 }
 

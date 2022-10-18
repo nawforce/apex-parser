@@ -198,7 +198,7 @@ LAST_N_WEEKS_N            : 'last_n_weeks';
 NEXT_N_MONTHS_N           : 'next_n_months';
 LAST_N_MONTHS_N           : 'last_n_months';
 THIS_QUARTER              : 'this_quarter';
-LAST_QUARTER              : 'last_quarted';
+LAST_QUARTER              : 'last_quarter';
 NEXT_QUARTER              : 'next_quarter';
 NEXT_N_QUARTERS_N         : 'next_n_quarters';
 LAST_N_QUARTERS_N         : 'last_n_quarters';

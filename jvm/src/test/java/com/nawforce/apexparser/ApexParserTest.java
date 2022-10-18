@@ -164,17 +164,6 @@ public class ApexParserTest {
         assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 
-    void testLastQuarterKeyword() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
-             "SELECT Id FROM Account WHERE DueDate = LAST_QUARTER")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.query();
-        assertEquals(0, errorCounter.getNumErrors());
-    }
-
     @Test
     void testSemiAllowedAsWhileBody() {
         Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
@@ -203,19 +192,16 @@ public class ApexParserTest {
     }
 
     @Test
-    void testWhenLiteralParens() throws IOException {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader(
+    void testWhenLiteralParens() {
+        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
                 "switch on (x) { \n" +
                         "  when 1 { return 1; } \n" +
                         "  when ((2)) { return 2; } \n" +
                         "  when (3), (4) { return 3; } \n" +
-                        "}")));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-        parser.statement();
-        assertEquals(0, errorCounter.getNumErrors());
+                        "}");
+        ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
 }
 

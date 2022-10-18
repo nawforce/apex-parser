@@ -217,3 +217,20 @@ test('testSemiDisallowedAsGeneralStatement', () => {
     expect(errorCounter.getNumErrors()).toEqual(1)
 })
 
+test('testWhenLiteralParens', () => {
+    const [parser, errorCounter] = createParser("test.apex", `
+    switch on (x) {
+        when 1 { return 1; }
+        when ((2)) { return 2; }
+        when (3), (4) { return 3; }
+     }`);
+
+    const context = parser.statement()
+
+    expect(context).toBeInstanceOf(StatementContext)
+    expect(errorCounter.getNumErrors()).toEqual(0)
+})
+
+
+
+

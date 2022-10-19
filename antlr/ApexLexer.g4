@@ -243,7 +243,7 @@ RETURNING                 : 'returning';
 LISTVIEW                  : 'listview';
 
 FindLiteral
-    :   '[' WS? 'find' WS '{' FindCharacters? '}'
+    :   '[' WS? 'find' WS '\'' FindCharacters? '\''
     ;
 
 fragment
@@ -253,6 +253,21 @@ FindCharacters
 
 fragment
 FindCharacter
+    :   ~['\\]
+    |   FindEscapeSequence
+    ;
+
+FindLiteralAlt
+    :   '[' WS? 'find' WS '{' FindCharactersAlt? '}'
+    ;
+
+fragment
+FindCharactersAlt
+    :   FindCharacterAlt+
+    ;
+
+fragment
+FindCharacterAlt
     :   ~[}\\]
     |   FindEscapeSequence
     ;

@@ -29,6 +29,13 @@ import 'CommonTokenStream' & 'ParseTreeWalker' from 'apex-parser' instead of fro
     import { CommonTokenStream} from "apex-parser";
     import { ParseTreeWalker } from "apex-parser";
 
+### SOSL FIND quoting
+SOSL FIND uses ' as a quoting character when embedded in Apex, in the API braces are used:
+
+    Find {something} RETURNING Account
+
+To parse the API format there is an alternative parser rule, soslLiteralAlt, that you can use instead of soslLiteral. See SOSLParserTest for some examples of how these differ.
+
 ### Packages
 
 Maven

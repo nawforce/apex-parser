@@ -1,37 +1,9 @@
-import { ApexLexer } from "../ApexLexer";
 import {
-    ApexParser, LiteralContext, Arth1ExpressionContext, CompilationUnitContext,
-    QueryContext, SoslLiteralContext, StatementContext, TriggerUnitContext
+    LiteralContext, Arth1ExpressionContext, CompilationUnitContext,
+    QueryContext, StatementContext, TriggerUnitContext
 } from "../ApexParser";
-import { CaseInsensitiveInputStream } from "../CaseInsensitiveInputStream"
-import { ANTLRErrorListener, CommonTokenStream, RecognitionException, Recognizer, Token } from 'antlr4ts';
 import { ThrowingErrorListener, SyntaxException } from "../ThrowingErrorListener";
-
-class SyntaxErrorCounter implements ANTLRErrorListener<Token> {
-    numErrors = 0
-
-    syntaxError(recognizer: Recognizer<Token, any>,
-        offendingSymbol: Token, line: number, charPositionInLine: number, msg: string,
-        e: RecognitionException | undefined): any {
-        this.numErrors += 1;
-    }
-
-    getNumErrors(): number {
-        return this.numErrors;
-    }
-}
-
-function createParser(userData: string, input: string): [ApexParser, SyntaxErrorCounter] {
-    const lexer = new ApexLexer(new CaseInsensitiveInputStream(userData, input))
-    const tokens = new CommonTokenStream(lexer);
-    const parser = new ApexParser(tokens)
-
-    parser.removeErrorListeners()
-    const errorCounter = new SyntaxErrorCounter();
-    parser.addErrorListener(errorCounter);
-
-    return [parser, errorCounter];
-}
+import { createParser } from "./SyntaxErrorCounter";
 
 test('Boolean Literal', () => {
 
@@ -133,15 +105,6 @@ test('SOQL Query Using Field function', () => {
     const context = parser.query()
 
     expect(context).toBeInstanceOf(QueryContext)
-    expect(errorCounter.getNumErrors()).toEqual(0)
-})
-
-test('SOSL Query', () => {
-    const [parser, errorCounter] = createParser("test.sosl", "[Find {something} RETURNING Account]")
-
-    const context = parser.soslLiteral()
-
-    expect(context).toBeInstanceOf(SoslLiteralContext)
     expect(errorCounter.getNumErrors()).toEqual(0)
 })
 

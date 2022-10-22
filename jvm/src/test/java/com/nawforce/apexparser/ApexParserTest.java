@@ -1,44 +1,13 @@
 package com.nawforce.apexparser;
 
-import org.antlr.v4.runtime.*;
 import org.junit.jupiter.api.Test;
 
 import javafx.util.Pair;
 
+import static com.nawforce.apexparser.SyntaxErrorCounter.createParser;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ApexParserTest {
-
-    public static class SyntaxErrorCounter extends BaseErrorListener {
-        private int numErrors = 0;
-
-        @Override
-        public void syntaxError(
-                Recognizer<?, ?> recognizer,
-                Object offendingSymbol,
-                int line,
-                int charPositionInLine,
-                String msg,
-                RecognitionException e) {
-            this.numErrors += 1;
-        }
-
-        public int getNumErrors() {
-            return this.numErrors;
-        }
-    }
-
-    Pair<ApexParser, SyntaxErrorCounter> createParser(String input) {
-        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(CharStreams.fromString(input)));
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-        ApexParser parser = new ApexParser(tokens);
-
-        parser.removeErrorListeners();
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-
-        return new Pair<>(parser, errorCounter);
-    }
 
     @Test
     void testBooleanLiteral() {
@@ -107,14 +76,6 @@ public class ApexParserTest {
     void testSOQL() {
         Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("Select Fields(All) from Account");
         ApexParser.QueryContext context = parserAndCounter.getKey().query();
-        assertNotNull(context);
-        assertEquals(0, parserAndCounter.getValue().getNumErrors());
-    }
-
-    @Test
-    void testSOSL() {
-        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find {something} RETURNING Account]");
-        ApexParser.SoslLiteralContext context = parserAndCounter.getKey().soslLiteral();
         assertNotNull(context);
         assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }

@@ -773,6 +773,10 @@ soslLiteral
     | LBRACK FIND boundExpression soslClauses RBRACK
     ;
 
+soslLiteralAlt
+    : FindLiteralAlt soslClauses RBRACK
+    ;
+
 soslClauses
     : (IN searchGroup)?
       (RETURNING fieldSpecList)?

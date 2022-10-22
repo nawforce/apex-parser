@@ -1,7 +1,14 @@
 {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?)$",
-    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"]
-  }
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  "testRegex": "/__tests__/.*Test.js$",
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "node"
+  ]
+}

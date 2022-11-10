@@ -1,10 +1,19 @@
 package com.nawforce.apexparser;
 
-import javafx.util.Pair;
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.BaseErrorListener;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
 
-public class SyntaxErrorCounter extends BaseErrorListener {
+public class ApexParserWithSyntaxErrorCounter extends BaseErrorListener {
     private int numErrors = 0;
+    private ApexParser parser;
+
+    ApexParserWithSyntaxErrorCounter(ApexParser parser) {
+      this.parser = parser;
+      parser.addErrorListener(this);
+    }
 
     @Override
     public void syntaxError(
@@ -21,15 +30,15 @@ public class SyntaxErrorCounter extends BaseErrorListener {
         return this.numErrors;
     }
 
-    public static Pair<ApexParser, SyntaxErrorCounter> createParser(String input) {
+    public ApexParser getParser() {
+        return parser;
+    }
+
+    public static ApexParserWithSyntaxErrorCounter createParser(String input) {
         ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(CharStreams.fromString(input)));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ApexParser parser = new ApexParser(tokens);
-
         parser.removeErrorListeners();
-        SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
-        parser.addErrorListener(errorCounter);
-
-        return new Pair<>(parser, errorCounter);
+        return new ApexParserWithSyntaxErrorCounter(parser);
     }
 }

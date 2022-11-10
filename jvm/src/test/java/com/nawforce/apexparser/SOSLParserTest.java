@@ -2,49 +2,47 @@ package com.nawforce.apexparser;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.util.Pair;
-
-import static com.nawforce.apexparser.SyntaxErrorCounter.createParser;
+import static com.nawforce.apexparser.ApexParserWithSyntaxErrorCounter.createParser;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SOSLParserTest {
     @Test
     void testBasicQuery() {
-        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find 'something' RETURNING Account]");
-        ApexParser.SoslLiteralContext context = parserAndCounter.getKey().soslLiteral();
+        ApexParserWithSyntaxErrorCounter parserAndCounter = createParser("[Find 'something' RETURNING Account]");
+        ApexParser.SoslLiteralContext context = parserAndCounter.getParser().soslLiteral();
         assertNotNull(context);
-        assertEquals(0, parserAndCounter.getValue().getNumErrors());
+        assertEquals(0, parserAndCounter.getNumErrors());
     }
 
     @Test
     void testEmbeddedQuote() {
-        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find 'some\\'thing' RETURNING Account]");
-        ApexParser.SoslLiteralContext context = parserAndCounter.getKey().soslLiteral();
+        ApexParserWithSyntaxErrorCounter parserAndCounter = createParser("[Find 'some\\'thing' RETURNING Account]");
+        ApexParser.SoslLiteralContext context = parserAndCounter.getParser().soslLiteral();
         assertNotNull(context);
-        assertEquals(0, parserAndCounter.getValue().getNumErrors());
+        assertEquals(0, parserAndCounter.getNumErrors());
     }
 
     @Test
     void testBracesFail() {
-        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find {something} RETURNING Account]");
-        ApexParser.SoslLiteralContext context = parserAndCounter.getKey().soslLiteral();
+        ApexParserWithSyntaxErrorCounter parserAndCounter = createParser("[Find {something} RETURNING Account]");
+        ApexParser.SoslLiteralContext context = parserAndCounter.getParser().soslLiteral();
         assertNotNull(context);
-        assertEquals(1, parserAndCounter.getValue().getNumErrors());
+        assertEquals(1, parserAndCounter.getNumErrors());
     }
 
     @Test
     void testBracesOnAltFormat() {
-        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find {something} RETURNING Account]");
-        ApexParser.SoslLiteralAltContext context = parserAndCounter.getKey().soslLiteralAlt();
+        ApexParserWithSyntaxErrorCounter parserAndCounter = createParser("[Find {something} RETURNING Account]");
+        ApexParser.SoslLiteralAltContext context = parserAndCounter.getParser().soslLiteralAlt();
         assertNotNull(context);
-        assertEquals(0, parserAndCounter.getValue().getNumErrors());
+        assertEquals(0, parserAndCounter.getNumErrors());
     }
 
     @Test
     void testQuotesFailOnAltFormat() {
-        Pair<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("[Find 'something' RETURNING Account]");
-        ApexParser.SoslLiteralAltContext context = parserAndCounter.getKey().soslLiteralAlt();
+        ApexParserWithSyntaxErrorCounter parserAndCounter = createParser("[Find 'something' RETURNING Account]");
+        ApexParser.SoslLiteralAltContext context = parserAndCounter.getParser().soslLiteralAlt();
         assertNotNull(context);
-        assertEquals(1, parserAndCounter.getValue().getNumErrors());
+        assertEquals(1, parserAndCounter.getNumErrors());
     }
 }

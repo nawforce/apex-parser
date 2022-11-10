@@ -3,7 +3,9 @@ package com.nawforce.apexparser;
 import org.junit.jupiter.api.Test;
 
 import static com.nawforce.apexparser.ApexParserWithSyntaxErrorCounter.createParser;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ApexParserTest {
 
@@ -163,5 +165,3 @@ public class ApexParserTest {
         assertEquals(0, parserAndCounter.getNumErrors());
     }
 }
-
-

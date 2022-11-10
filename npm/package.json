@@ -11,7 +11,7 @@
     "test": "jest --config jestconfig.json lib",
     "antlr4ts": "npm run antlr-build && npm run antlr-patch ",
     "antlr-build": "(cd antlr; antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4)",
-    "antlr-patch": "sed -i '' -e 's/public void clearCache() {.*}//g' src/ApexParser.ts && sed -i '' -e 's/public void clearCache() {.*}//g' src/ApexLexer.ts",
+    "antlr-patch": "sed -i -e 's/public void clearCache() {.*}//g' src/ApexParser.ts && sed -i -e 's/public void clearCache() {.*}//g' src/ApexLexer.ts",
     "check": "node -e require(\"./lib/index.js\").check()'"
   },
   "files": [

@@ -162,6 +162,8 @@ TRACKING        : 'tracking';
 VIEWSTAT        : 'viewstat';
 CUSTOM          : 'custom';
 STANDARD        : 'standard';
+DISTANCE        : 'distance';
+GEOLOCATION     : 'geolocation';
 
 // SOQL Date functions
 CALENDAR_MONTH      : 'calendar_month';
@@ -378,7 +380,6 @@ DIV             : '/';
 BITAND          : '&';
 BITOR           : '|';
 CARET           : '^';
-MOD             : '%';
 MAPTO           : '=>';
 
 ADD_ASSIGN      : '+=';
@@ -388,7 +389,6 @@ DIV_ASSIGN      : '/=';
 AND_ASSIGN      : '&=';
 OR_ASSIGN       : '|=';
 XOR_ASSIGN      : '^=';
-MOD_ASSIGN      : '%=';
 LSHIFT_ASSIGN   : '<<=';
 RSHIFT_ASSIGN   : '>>=';
 URSHIFT_ASSIGN  : '>>>=';

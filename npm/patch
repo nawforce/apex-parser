@@ -1,0 +1,5 @@
+var shell = require('shelljs');
+
+shell.sed('-i', 'public void clearCache\\(\\) {.*}', '', 'src/ApexLexer.ts');
+shell.sed('-i', 'public void clearCache\\(\\) {.*}', '', 'src/ApexParser.ts');
+console.log('Patched ApexParser.ts & ApexLexer.ts to remove clearCache()');

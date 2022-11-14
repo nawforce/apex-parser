@@ -1,7 +1,9 @@
 package com.nawforce.apexparser;
 
-import javafx.util.Pair;
 import org.antlr.v4.runtime.*;
+
+import java.util.AbstractMap;
+import java.util.Map;
 
 public class SyntaxErrorCounter extends BaseErrorListener {
     private int numErrors = 0;
@@ -21,7 +23,7 @@ public class SyntaxErrorCounter extends BaseErrorListener {
         return this.numErrors;
     }
 
-    public static Pair<ApexParser, SyntaxErrorCounter> createParser(String input) {
+    public static Map.Entry<ApexParser, SyntaxErrorCounter> createParser(String input) {
         ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(CharStreams.fromString(input)));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         ApexParser parser = new ApexParser(tokens);
@@ -30,6 +32,6 @@ public class SyntaxErrorCounter extends BaseErrorListener {
         SyntaxErrorCounter errorCounter = new SyntaxErrorCounter();
         parser.addErrorListener(errorCounter);
 
-        return new Pair<>(parser, errorCounter);
+        return new AbstractMap.SimpleEntry<ApexParser, SyntaxErrorCounter>(parser, errorCounter);
     }
 }

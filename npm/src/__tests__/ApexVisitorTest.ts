@@ -24,7 +24,7 @@ test('Vistor is visited', () => {
     let lexer = new ApexLexer(new CaseInsensitiveInputStream("test.cls", "public class Hello { public void func(){} }"))
     let tokens = new CommonTokenStream(lexer);
 
-    let parser = new ApexParser(tokens)
+    const parser = new ApexParser(tokens)
 
     parser.removeErrorListeners()
     parser.addErrorListener(new ThrowingErrorListener());

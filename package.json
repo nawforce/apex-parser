@@ -1,15 +1,16 @@
 {
   "name": "apex-parser-init",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/nawforce/apex-parser",
   "repository": "nawforce/apex-parser",
   "scripts": {
-    "build": "npm run build-npm && npm run build-jvm",
-    "build-npm": "npm run init-npm && cd npm && npm run build && npm run test && cd ..",
-    "build-jvm": "npm run init-jvm && cd jvm && mvn package && cd ..",
-    "init-npm": "cp antlr/* npm/antlr && (cd npm; npm ci)",
-    "init-jvm": "cp antlr/* jvm/src/main/antlr4/com/nawforce/apexparser"
+    "build": "npm run init && (cd npm; npm run build) && (cd jvm; mvn package)",
+    "init": "npm run winOs-init32 && npm run winOs-init64 && npm run init-npm && npm run init-jvm",
+    "init-npm": "cp antlr/* npm/antlr && (cd npm; pwd)",
+    "init-jvm": "cp antlr/* jvm/src/main/antlr4/com/nawforce/apexparser",
+    "winOs-init32": "test -f \"C:\\\\Program Files (x86)\\\\git\\\\bin\\\\bash.exe\" && (echo \"32bit installation Found\"; npm config set script-shell \"C:\\\\Program Files (x86)\\\\git\\\\bin\\\\bash.exe\") || echo \"32bit NOT-Found\"",
+    "winOs-init64": "test -f \"C:\\\\Program Files\\\\git\\\\bin\\\\bash.exe\" && (echo \"64bit installation Found\"; npm config set script-shell \"C:\\\\Program Files\\\\git\\\\bin\\\\bash.exe\") || echo \"64bit NOT-Found\"\n"
   },
   "files": [
   ],

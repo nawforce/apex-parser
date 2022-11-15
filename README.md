@@ -7,7 +7,7 @@ There are two builds of the parser available, a NPM module for use with Node and
 
 These builds just contain the Parser & Lexer and provides no further support for analysing the generated parse trees beyond what is provided by ANTLR4. 
 
-As Apex & SOQL/SOQL are case-insenstive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automtaically parsed, but you can also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
+As Apex & SOQL/SOQL are case-insensitive languages you need to use the provided CaseInsensitiveInputStream for the parser to function correctly. When parsing Apex, inline SOQL/SOSL is automatically parsed, but you can also parse SOQL/SOQL directly. You can find some minimal examples in the test classes. 
 
 ### Install and Building
 To use correctly this code you need before install:
@@ -35,7 +35,7 @@ The 'context' is a CompilationUnitContext object which is the root of the parsed
 ### antlr4ts versions
 
 The npm module uses antlr4ts 0.5.0-alpha.4, this was updated from 0.5.0-alpha.3 in the 2.9.1 version. You should make
-sure that if you are using a matching verions of this dependency if you use it directly. To avoid issues you can 
+sure that if you are using a matching versions of this dependency if you use it directly. To avoid issues you can 
 import 'CommonTokenStream' & 'ParseTreeWalker' from 'apex-parser' instead of from antlr4ts.
 
     import { CommonTokenStream} from "apex-parser";
@@ -66,7 +66,7 @@ NPM
     2.15.0 - Revert 2.14.0 changes.
     2.14.0 - Change npm api to replace ANTLRInputStream with CharStream, for Unicode char positions  
     2.13.0 - Fixes for negative numerics & Currency literals in SOQL 
-    2.12.0 - Replace deprecated ANTLRINputStream, DateTime & Currency literals fixes (contrib Aaron Hurst) 
+    2.12.0 - Replace deprecated ANTLRInputStream, DateTime & Currency literals fixes (contrib Aaron Hurst)
     2.11.0 - Fix for SOQL UPDATE VIEWSTAT/TRACKING & removal of class type arguments
     2.10.0 - Allow type arguments on Classes (non-standard!)
     2.9.2 - Generate .d.ts files 

@@ -1,22 +1,20 @@
 {
   "name": "apex-parser",
-  "version": "2.15.0",
+  "version": "2.15.1",
   "author": "Kevin Jones <nawforce@gmail.com> (https://github.com/nawforce)",
   "bugs": "https://github.com/nawforce/apex-parser/issues",
   "description": "Javascript parser for Salesforce Apex Language",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "scripts": {
-    "antlr4ts": "npm run antlr-build && npm run antlr-patch",
-    "antlr-build": "(cd antlr; antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4)",
-    "antlr-patch": "node patch",
-    "build": "npm run clean && npm run antlr4ts && cp ../README.md . && tsc",
-    "check": "node -e 'require(\"./lib/index.js\").check()'",
-    "clean": "rm -rf lib",
+    "build": "npm run antlr4ts && cp ../README.md . && tsc",
     "test": "jest --config jestconfig.json lib",
-    "test-samples": "jest --config sys.jestconfig.json lib",
-    "test-snapshot": "npm run test-samples -- --updateSnapshot"
+    "antlr4ts": "npm run antlr-build && npm run antlr-patch ",
+    "antlr-build": "(cd antlr; antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4)",
+    "antlr-patch": "sed -i -e 's/public void clearCache() {.*}//g' src/ApexParser.ts && sed -i -e 's/public void clearCache() {.*}//g' src/ApexLexer.ts",
+    "check": "node -e require(\"./lib/index.js\").check()'"
   },
+  "type": "module",
   "files": [
     "lib/**/*"
   ],
@@ -33,7 +31,6 @@
     "antlr4ts-cli": "0.5.0-alpha.4",
     "eslint": "^7.32.0",
     "jest": "^27.0.6",
-    "shx": "^0.3.4",
     "typescript": "^4.3.5"
   },
   "engines": {

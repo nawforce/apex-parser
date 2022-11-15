@@ -71,6 +71,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>11</version>
+    </dependency>
+
   </dependencies>
 
   <distributionManagement>

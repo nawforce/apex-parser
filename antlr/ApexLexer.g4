@@ -434,7 +434,7 @@ WS  :  [ \t\r\n\u000C]+ -> channel(WHITESPACE_CHANNEL)
     ;
 
 DOC_COMMENT
-    :   '/**' [\r\n] .*? '*/' -> channel(COMMENT_CHANNEL)
+    :   '/**' .*? '*/' -> channel(COMMENT_CHANNEL)
     ;
 
 COMMENT

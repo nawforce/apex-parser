@@ -38,4 +38,36 @@ public class ApexLexerTest {
         CommonTokenStream tokens  = new CommonTokenStream(lexer);
         assertEquals(2, tokens.getNumberOfOnChannelTokens());
     }
+
+    @Test
+    void testMultilineApexDoc() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("/**\n * ApexDoc\n */\nclass Test {}")));
+        CommonTokenStream tokens  = new CommonTokenStream(lexer);
+        tokens.fill();
+        assertEquals(ApexLexer.DOC_COMMENT, tokens.get(0).getType());
+    }
+
+    @Test
+    void testExtraAsterisksApexDoc() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("/********\n * ApexDoc\n */\nclass Test {}")));
+        CommonTokenStream tokens  = new CommonTokenStream(lexer);
+        tokens.fill();
+        assertEquals(ApexLexer.DOC_COMMENT, tokens.get(0).getType());
+    }
+
+    @Test
+    void testSingleLineApexDoc() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("/** ApexDoc */ class Test {}")));
+        CommonTokenStream tokens  = new CommonTokenStream(lexer);
+        tokens.fill();
+        assertEquals(ApexLexer.DOC_COMMENT, tokens.get(0).getType());
+    }
+
+    @Test
+    void testRegularComment() throws IOException {
+        ApexLexer lexer = new ApexLexer(new CaseInsensitiveInputStream(new StringReader("/* regular */ class Test {}")));
+        CommonTokenStream tokens  = new CommonTokenStream(lexer);
+        tokens.fill();
+        assertEquals(ApexLexer.COMMENT, tokens.get(0).getType());
+    }
 }

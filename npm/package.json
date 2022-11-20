@@ -8,11 +8,10 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "antlr4ts": "npm run antlr-build && npm run antlr-patch",
-    "antlr-build": "(cd antlr; antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4)",
+    "antlr-build": "cd antlr && antlr4ts -visitor -o ../src ApexLexer.g4 ApexParser.g4",
     "antlr-patch": "node patch",
-    "build": "npm run clean && npm run antlr4ts && cp ../README.md . && tsc",
+    "build": "npm run antlr4ts && tsc",
     "check": "node -e 'require(\"./lib/index.js\").check()'",
-    "clean": "rm -rf lib",
     "test": "jest --config jestconfig.json lib",
     "test-samples": "jest --config sys.jestconfig.json lib",
     "test-snapshot": "npm run test-samples -- --updateSnapshot"

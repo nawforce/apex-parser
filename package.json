@@ -6,16 +6,16 @@
   "repository": "nawforce/apex-parser",
   "scripts": {
     "build": "npm run build-npm && npm run build-jvm",
-    "build-npm": "npm run init-npm && cd npm && npm run build && npm run test && cd ..",
+    "build-npm": "npm run init-npm && npm run copy-readme-npm && cd npm && npm ci && npm run build && npm run test && cd ..",
     "build-jvm": "npm run init-jvm && cd jvm && mvn package && cd ..",
-    "init-npm": "cp antlr/* npm/antlr && (cd npm; npm ci)",
-    "init-jvm": "cp antlr/* jvm/src/main/antlr4/com/nawforce/apexparser"
+    "init-npm": "copyfiles -f \"antlr/*.g4\" npm/antlr",
+    "init-jvm": "copyfiles -f \"antlr/*.g4\" jvm/src/main/antlr4/com/nawforce/apexparser",
+    "copy-readme-npm": "copyfiles README.md npm"
   },
-  "files": [
-  ],
-  "dependencies": {
-  },
+  "files": [],
+  "dependencies": {},
   "devDependencies": {
+    "copyfiles": "2.4.1"
   },
   "engines": {
     "node": ">=8.0.0"

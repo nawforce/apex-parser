@@ -1,4 +1,4 @@
-name: Build
+name: Linux Java8/Node14 Build
 
 on:
   push:
@@ -20,12 +20,14 @@ jobs:
       with:
         node-version: 14
 
-    - name: Set up JDK 11
+    - name: Set up JDK 8
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
-        java-version: 11
+        java-version: 8
         cache: 'maven'
 
     - name: Build & Test
-      run: npm run build
+      run: |
+        npm ci
+        npm run build

@@ -8,8 +8,8 @@
     "build": "npm run build-npm && npm run build-jvm",
     "build-npm": "npm run init-npm && cd npm && npm run build && npm run test && cd ..",
     "build-jvm": "npm run init-jvm && cd jvm && mvn package && cd ..",
-    "init-npm": "copyfiles \"antlr/*\" npm/antlr && (cd npm; npm ci)",
-    "init-jvm": "copyfiles \"antlr/*\" jvm/src/main/antlr4/com/nawforce/apexparser"
+    "init-npm": "copyfiles -f \"antlr/*.g4\" npm/antlr && (cd npm; npm ci)",
+    "init-jvm": "copyfiles -f \"antlr/*.g4\" jvm/src/main/antlr4/com/nawforce/apexparser"
   },
   "files": [],
   "dependencies": {},

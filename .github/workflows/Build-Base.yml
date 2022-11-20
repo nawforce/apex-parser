@@ -28,4 +28,6 @@ jobs:
         cache: 'maven'
 
     - name: Build & Test
-      run: npm run build
+      run: |
+        npm ci
+        npm run build

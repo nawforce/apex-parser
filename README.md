@@ -26,9 +26,7 @@ Prior to 2.12.0 the use of ANTLRInputStream for reading data in CaseInsensitiveS
 
 ## antlr4ts versions
 
-The npm module uses antlr4ts 0.5.0-alpha.4, this was updated from 0.5.0-alpha.3 in the 2.9.1 version. You should make
-sure that if you are using a matching versions of this dependency if you use it directly. To avoid issues you can
-import 'CommonTokenStream' & 'ParseTreeWalker' from 'apex-parser' instead of from antlr4ts.
+The npm module uses antlr4ts 0.5.0-alpha.4, this was updated from 0.5.0-alpha.3 in the 2.9.1 version. You should make sure that if you are using a matching versions of this dependency if you use it directly. To avoid issues you can import 'CommonTokenStream' & 'ParseTreeWalker' from 'apex-parser' instead of from antlr4ts.
 
     import { CommonTokenStream} from "apex-parser";
     import { ParseTreeWalker } from "apex-parser";
@@ -59,6 +57,7 @@ NPM
 
 To build both distributions:
 
+    npm ci
     npm run build
 
 ## History

@@ -46,12 +46,12 @@ Maven
     <dependency>
         <groupId>com.github.nawforce</groupId>
         <artifactId>apex-parser</artifactId>
-        <version>2.15.0</version>
+        <version>2.16.0</version>
     </dependency>
 
 NPM
 
-    "apex-parser": "^2.15.0"
+    "apex-parser": "^2.16.0"
 
 ## Building
 
@@ -62,6 +62,7 @@ To build both distributions:
 
 ## History
 
+    2.16.0 - Fixes for empty for & while loops, soql date formulas & distance functions, additional parenthesis on when clauses, SOSL find quoting, modulus support (removed), apexdoc newline handling - thanks to Aaron Hurst for most of these ;-) 
     2.15.0 - Revert 2.14.0 changes.
     2.14.0 - Change npm api to replace ANTLRInputStream with CharStream, for Unicode char positions  
     2.13.0 - Fixes for negative numerics & Currency literals in SOQL 

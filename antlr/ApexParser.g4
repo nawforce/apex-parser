@@ -436,7 +436,7 @@ expression
     | expression (INC | DEC)                                                                          # postOpExpression
     | (ADD|SUB|INC|DEC) expression                                                                    # preOpExpression
     | (TILDE|BANG) expression                                                                         # negExpression
-    | expression (MUL|DIV) expression                                                             # arth1Expression
+    | expression (MUL|DIV) expression                                                                 # arth1Expression
     | expression (ADD|SUB) expression                                                                 # arth2Expression
     | expression (LT LT | GT GT GT | GT GT) expression                                                # bitExpression
     | expression (GT | LT) ASSIGN? expression                                                         # cmpExpression
@@ -469,6 +469,7 @@ primary
     | SUPER                                                                                          # superPrimary
     | literal                                                                                        # literalPrimary
     | typeRef DOT CLASS                                                                              # typeRefPrimary
+    | VOID DOT CLASS                                                                                 # voidPrimary
     | id                                                                                             # idPrimary
     | soqlLiteral                                                                                    # soqlPrimary
     | soslLiteral                                                                                    # soslPrimary
@@ -746,30 +747,37 @@ dateFormula
     | NEXT_90_DAYS
     | LAST_N_DAYS_N COLON signedInteger
     | NEXT_N_DAYS_N COLON signedInteger
+    | N_DAYS_AGO_N COLON signedInteger
     | NEXT_N_WEEKS_N COLON signedInteger
     | LAST_N_WEEKS_N COLON signedInteger
+    | N_WEEKS_AGO_N COLON signedInteger
     | NEXT_N_MONTHS_N COLON signedInteger
     | LAST_N_MONTHS_N COLON signedInteger
+    | N_MONTHS_AGO_N COLON signedInteger
     | THIS_QUARTER
     | LAST_QUARTER
     | NEXT_QUARTER
     | NEXT_N_QUARTERS_N COLON signedInteger
     | LAST_N_QUARTERS_N COLON signedInteger
+    | N_QUARTERS_AGO_N COLON signedInteger
     | THIS_YEAR
     | LAST_YEAR
     | NEXT_YEAR
     | NEXT_N_YEARS_N COLON signedInteger
     | LAST_N_YEARS_N COLON signedInteger
+    | N_YEARS_AGO_N COLON signedInteger
     | THIS_FISCAL_QUARTER
     | LAST_FISCAL_QUARTER
     | NEXT_FISCAL_QUARTER
     | NEXT_N_FISCAL_QUARTERS_N COLON signedInteger
     | LAST_N_FISCAL_QUARTERS_N COLON signedInteger
+    | N_FISCAL_QUARTERS_AGO_N COLON signedInteger
     | THIS_FISCAL_YEAR
     | LAST_FISCAL_YEAR
     | NEXT_FISCAL_YEAR
     | NEXT_N_FISCAL_YEARS_N COLON signedInteger
     | LAST_N_FISCAL_YEARS_N COLON signedInteger
+    | N_FISCAL_YEARS_AGO_N COLON signedInteger
     ;
 
 signedInteger
@@ -944,30 +952,37 @@ id
     | NEXT_90_DAYS
     | LAST_N_DAYS_N
     | NEXT_N_DAYS_N
+    | N_DAYS_AGO_N
     | NEXT_N_WEEKS_N
     | LAST_N_WEEKS_N
+    | N_WEEKS_AGO_N
     | NEXT_N_MONTHS_N
     | LAST_N_MONTHS_N
+    | N_MONTHS_AGO_N
     | THIS_QUARTER
     | LAST_QUARTER
     | NEXT_QUARTER
     | NEXT_N_QUARTERS_N
     | LAST_N_QUARTERS_N
+    | N_QUARTERS_AGO_N
     | THIS_YEAR
     | LAST_YEAR
     | NEXT_YEAR
     | NEXT_N_YEARS_N
     | LAST_N_YEARS_N
+    | N_YEARS_AGO_N
     | THIS_FISCAL_QUARTER
     | LAST_FISCAL_QUARTER
     | NEXT_FISCAL_QUARTER
     | NEXT_N_FISCAL_QUARTERS_N
     | LAST_N_FISCAL_QUARTERS_N
+    | N_FISCAL_QUARTERS_AGO_N
     | THIS_FISCAL_YEAR
     | LAST_FISCAL_YEAR
     | NEXT_FISCAL_YEAR
     | NEXT_N_FISCAL_YEARS_N
     | LAST_N_FISCAL_YEARS_N
+    | N_FISCAL_YEARS_AGO_N
     // SOSL Keywords
     | FIND
     | EMAIL
@@ -1130,30 +1145,37 @@ anyId
     | NEXT_90_DAYS
     | LAST_N_DAYS_N
     | NEXT_N_DAYS_N
+    | N_DAYS_AGO_N
     | NEXT_N_WEEKS_N
     | LAST_N_WEEKS_N
+    | N_WEEKS_AGO_N
     | NEXT_N_MONTHS_N
     | LAST_N_MONTHS_N
+    | N_MONTHS_AGO_N
     | THIS_QUARTER
     | LAST_QUARTER
     | NEXT_QUARTER
     | NEXT_N_QUARTERS_N
     | LAST_N_QUARTERS_N
+    | N_QUARTERS_AGO_N
     | THIS_YEAR
     | LAST_YEAR
     | NEXT_YEAR
     | NEXT_N_YEARS_N
     | LAST_N_YEARS_N
+    | N_YEARS_AGO_N
     | THIS_FISCAL_QUARTER
     | LAST_FISCAL_QUARTER
     | NEXT_FISCAL_QUARTER
     | NEXT_N_FISCAL_QUARTERS_N
     | LAST_N_FISCAL_QUARTERS_N
+    | N_FISCAL_QUARTERS_AGO_N
     | THIS_FISCAL_YEAR
     | LAST_FISCAL_YEAR
     | NEXT_FISCAL_YEAR
     | NEXT_N_FISCAL_YEARS_N
     | LAST_N_FISCAL_YEARS_N
+    | N_FISCAL_YEARS_AGO_N
     // SOSL Keywords
     | FIND
     | EMAIL

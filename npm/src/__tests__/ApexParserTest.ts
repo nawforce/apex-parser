@@ -193,3 +193,28 @@ test('testWhenLiteralParens', () => {
     expect(context).toBeInstanceOf(StatementContext)
     expect(errorCounter.getNumErrors()).toEqual(0)
 })
+
+test('testSoqlModeKeywords', () => {
+    const MODES = ["USER_MODE", "SYSTEM_MODE"];
+    for (const mode of MODES) {
+        const [parser, errorCounter] = createParser("test.soql",
+            `SELECT Id FROM Account WITH ${mode}`);
+        const context = parser.query()
+
+        expect(context).toBeInstanceOf(QueryContext)
+        expect(errorCounter.getNumErrors()).toEqual(0)
+    }
+})
+
+
+test('testDmlModeKeywords', () => {
+    const MODES = ["USER", "SYSTEM"];
+    for (const mode of MODES) {
+        const [parser, errorCounter] = createParser("test.apex",
+            `insert as ${mode} contact;`);
+        const context = parser.statement()
+
+        expect(context).toBeInstanceOf(StatementContext)
+        expect(errorCounter.getNumErrors()).toEqual(0)
+    }
+})

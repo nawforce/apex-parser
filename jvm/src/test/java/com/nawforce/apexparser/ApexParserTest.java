@@ -164,6 +164,30 @@ public class ApexParserTest {
         assertNotNull(context);
         assertEquals(0, parserAndCounter.getValue().getNumErrors());
     }
+
+    @Test
+    void testSoqlModeKeywords() {
+        String [] MODES = new String[] { "USER_MODE", "SYSTEM_MODE" };
+        for (String mode : MODES) {
+            Map.Entry<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                    String.format("SELECT Id FROM Account WITH %s", mode));
+            ApexParser.QueryContext context = parserAndCounter.getKey().query();
+            assertNotNull(context);
+            assertEquals(0, parserAndCounter.getValue().getNumErrors());
+        }
+    }
+
+    @Test
+    void testDmlModeKeywords() {
+        String [] MODES = new String[] { "USER", "SYSTEM" };
+        for (String mode : MODES) {
+            Map.Entry<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser(
+                    String.format("insert as %s contact;", mode));
+            ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+            assertNotNull(context);
+            assertEquals(0, parserAndCounter.getValue().getNumErrors());
+        }
+    }
 }
 
 

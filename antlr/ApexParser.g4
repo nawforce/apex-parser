@@ -582,7 +582,9 @@ subFieldList
 
 subFieldEntry
     : fieldName soqlId?
-    | soqlFunction soqlId?;
+    | soqlFunction soqlId?
+    | typeOf
+    ;
 
 soqlFieldsParameter
     : ALL

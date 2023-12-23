@@ -50,8 +50,22 @@ triggerUnit
     : TRIGGER id ON id LPAREN triggerCase (COMMA triggerCase)* RPAREN block EOF
     ;
 
+// v2 entry point for Apex trigger files, see README.md for details
+triggerUnit2
+    : TRIGGER id ON id LPAREN triggerCase (COMMA triggerCase)* RPAREN triggerBlock EOF
+    ;
+
 triggerCase
     : (BEFORE|AFTER) (INSERT|UPDATE|DELETE|UNDELETE)
+    ;
+
+triggerBlock
+    : LBRACE triggerBlockMember* RBRACE
+    ;
+
+triggerBlockMember
+    : modifier* triggerMemberDeclaration
+    | statement
     ;
 
 // entry point for Apex class files
@@ -127,6 +141,15 @@ memberDeclaration
     : methodDeclaration
     | fieldDeclaration
     | constructorDeclaration
+    | interfaceDeclaration
+    | classDeclaration
+    | enumDeclaration
+    | propertyDeclaration
+    ;
+
+triggerMemberDeclaration
+    : methodDeclaration
+    | fieldDeclaration
     | interfaceDeclaration
     | classDeclaration
     | enumDeclaration

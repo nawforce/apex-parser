@@ -474,6 +474,7 @@ expression
     | expression BITOR expression                                                                     # bitOrExpression
     | expression AND expression                                                                       # logAndExpression
     | expression OR expression                                                                        # logOrExpression
+    | expression DOUBLE_QUESTION expression                                                           # nullCoalescingExpression
     | <assoc=right> expression QUESTION expression COLON expression                                   # condExpression
     | <assoc=right> expression
       (   ASSIGN

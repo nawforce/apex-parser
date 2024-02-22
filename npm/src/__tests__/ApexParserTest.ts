@@ -218,3 +218,12 @@ test('testDmlModeKeywords', () => {
         expect(errorCounter.getNumErrors()).toEqual(0)
     }
 })
+
+test('testNullCoalescingOperator', () => {
+    const [parser, errorCounter] = createParser("test.apex", "Integer notNullReturnValue = anInteger ?? 100;");
+
+    const context = parser.statement()
+
+    expect(context).toBeInstanceOf(StatementContext)
+    expect(errorCounter.getNumErrors()).toEqual(0)
+})

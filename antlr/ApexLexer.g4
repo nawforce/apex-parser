@@ -367,7 +367,8 @@ SEMI            : ';';
 COMMA           : ',';
 DOT             : '.';
 
-// §3.12 Operators
+// §3.12 Operators (JLS https://docs.oracle.com/javase/specs/jls/se21/html/jls-3.html#jls-3.12)
+// https://developer.salesforce.com/docs/atlas.en-us.248.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_precedence.htm
 
 ASSIGN          : '=';
 GT              : '>';
@@ -405,6 +406,10 @@ XOR_ASSIGN      : '^=';
 LSHIFT_ASSIGN   : '<<=';
 RSHIFT_ASSIGN   : '>>=';
 URSHIFT_ASSIGN  : '>>>=';
+
+// null coalescing operator
+// since Apex 60: https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_NullCoalescingOperator.htm
+DOUBLE_QUESTION : '??';
 
 //
 // Additional symbols not defined in the lexical specification

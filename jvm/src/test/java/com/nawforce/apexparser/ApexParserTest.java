@@ -188,6 +188,14 @@ public class ApexParserTest {
             assertEquals(0, parserAndCounter.getValue().getNumErrors());
         }
     }
+
+    @Test
+    void testNullCoalescingOperator() {
+        Map.Entry<ApexParser, SyntaxErrorCounter> parserAndCounter = createParser("Integer notNullReturnValue = anInteger ?? 100;");
+        ApexParser.StatementContext context = parserAndCounter.getKey().statement();
+        assertNotNull(context);
+        assertEquals(0, parserAndCounter.getValue().getNumErrors());
+    }
 }
 
 

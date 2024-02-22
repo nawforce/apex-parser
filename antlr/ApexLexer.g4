@@ -188,6 +188,7 @@ WEEK_IN_YEAR        : 'week_in_year';
 CONVERT_TIMEZONE    : 'converttimezone';
 
 // SOQL Date formulas
+// see https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm
 YESTERDAY                 : 'yesterday';
 TODAY                     : 'today';
 TOMORROW                  : 'tomorrow';

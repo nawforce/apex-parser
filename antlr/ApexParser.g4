@@ -554,6 +554,7 @@ arguments
     ;
 
 // SOQL
+// https://developer.salesforce.com/docs/atlas.en-us.248.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm
 
 soqlLiteral
     : LBRACK query RBRACK
@@ -764,6 +765,7 @@ forClauses
 boundExpression
     : COLON expression;
 
+// see https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm
 dateFormula
     : YESTERDAY
     | TODAY
@@ -818,6 +820,7 @@ soqlId
     : id;
 
 // SOSL
+// https://developer.salesforce.com/docs/atlas.en-us.248.0.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_sosl_intro.htm
 soslLiteral
     : FindLiteral soslClauses RBRACK
     | LBRACK FIND boundExpression soslClauses RBRACK

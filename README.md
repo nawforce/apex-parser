@@ -1,3 +1,7 @@
+> This repository has been **archived**. The new home for the Apex Parser is https://github.com/apex-dev-tools/apex-parser
+
+-----
+
 # apex-parser
 
 Parser for Salesforce Apex (including Triggers & inline SOQL/SOQL). This is based on an [ANTLR4](https://www.antlr.org/) grammar, see antlr/ApexParser.g4.
